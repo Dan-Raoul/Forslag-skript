@@ -33,15 +33,15 @@ function redirect($filename) {
 // Samle brukarinfo
 // Først IP
 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-    $ip = test_input($_SERVER['HTTP_CLIENT_IP']);
+    $forslag_ip = test_input($_SERVER['HTTP_CLIENT_IP']);
 } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-    $ip = test_input($_SERVER['HTTP_X_FORWARDED_FOR']);
+    $forslag_ip = test_input($_SERVER['HTTP_X_FORWARDED_FOR']);
 } else {
-    $ip = test_input($_SERVER['REMOTE_ADDR']);
+    $forslag_ip = test_input($_SERVER['REMOTE_ADDR']);
 };
 // Nettlesar, kor dei kjem frå
-$nettleser 		= 	test_input($_SERVER['HTTP_USER_AGENT']);
-$referent		=	test_input($_SERVER['HTTP_REFERER']);
+$forslag_nettleser 		= 	test_input($_SERVER['HTTP_USER_AGENT']);
+$forslag_referent		=	test_input($_SERVER['HTTP_REFERER']);
 
 
 ?>

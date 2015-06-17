@@ -2,19 +2,19 @@
 include_once('config.php');
 
 // Kople til databasen
-$dbtilkopling = new mysqli($dbserver, $dbbrukar, $dbpassord, $dbnamn);
+$forslag_dbtilkopling = new mysqli($forslag_dbserver, $forslag_dbbrukar, $forslag_dbpassord, $forslag_dbnamn);
 // Sjekke tilkopling til databasen
 /*if ($dbtilkopling->connect_error) {
     die("Tilkopling feilet: " . $dbtilkopling->connect_error);
 } */
 
 // Lese frå database
-$stat_sak ="SELECT id, Sak, COUNT(*) AS freq FROM " . $dbtabell . " GROUP BY Sak ORDER BY freq DESC";
+$forslag_stat_sak ="SELECT id, Sak, COUNT(*) AS freq FROM " . $forslag_dbtabell . " GROUP BY Sak ORDER BY freq DESC";
 
-$result_sak = $dbtilkopling->query($stat_sak);
+$forslag_result_sak = $forslag_dbtilkopling->query($forslag_stat_sak);
 
-if($result_sak->num_rows > 0) {
-		$sakene = "
+if($forslag_result_sak->num_rows > 0) {
+		$forslag_sakene = "
 		<table>
 			<tr>
 				<th>Sak:</th>
@@ -22,27 +22,27 @@ if($result_sak->num_rows > 0) {
 			</tr>
 		";
 		// output data of each row
-		while($row = mysqli_fetch_assoc($result_sak)) {
-			$sakene .= "
+		while($forslag_row = mysqli_fetch_assoc($forslag_result_sak)) {
+			$forslag_sakene .= "
 			<tr>
-				<td>".$row['Sak']."</td>
-				<td>".$row['freq']."</td>
+				<td>".$forslag_row['Sak']."</td>
+				<td>".$forslag_row['freq']."</td>
 			</tr>
 			";
 		}
-		$sakene .= "</table>";
+		$forslag_sakene .= "</table>";
 }
 else {
-	$sakene = "Ingen statistikk.";
+	$forslag_sakene = "Ingen statistikk.";
 }
 
-$stat_delegat ="SELECT id, Delegat, Namn, COUNT(*) AS freq FROM " . $dbtabell . " GROUP BY Delegat ORDER BY freq DESC";
+$forslag_stat_delegat ="SELECT id, Delegat, Namn, COUNT(*) AS freq FROM " . $forslag_dbtabell . " GROUP BY Delegat ORDER BY freq DESC";
 
 
-$result_delegat = $dbtilkopling->query($stat_delegat);
+$forslag_result_delegat = $forslag_dbtilkopling->query($forslag_stat_delegat);
 
-if($result_delegat->num_rows > 0) {
-		$delegatene = "
+if($forslag_result_delegat->num_rows > 0) {
+		$forslag_delegatene = "
 		<table>
 			<tr>
 				<th>Delegat:</th>
@@ -51,24 +51,24 @@ if($result_delegat->num_rows > 0) {
 			</tr>
 		";
 		// output data of each row
-		while($row = mysqli_fetch_assoc($result_delegat)) {
-			$delegatene .= "
+		while($forslag_row = mysqli_fetch_assoc($forslag_result_delegat)) {
+			$forslag_delegatene .= "
 			<tr>
-				<td>".$row['Delegat']."</td>
-				<td>".$row['Namn']."</td>
-				<td>".$row['freq']."</td>
+				<td>".$forslag_row['Delegat']."</td>
+				<td>".$forslag_row['Namn']."</td>
+				<td>".$forslag_row['freq']."</td>
 			</tr>
 			";
 		}
-		$delegatene .= "</table>";
+		$forslag_delegatene .= "</table>";
 }
 else {
-	$delegatene = "Ingen statistikk.";
+	$forslag_delegatene = "Ingen statistikk.";
 }
 
 
 	
-$dbtilkopling->close();
+$forslag_dbtilkopling->close();
 
 ?>
 
@@ -76,7 +76,7 @@ $dbtilkopling->close();
 <head>
 	<meta charset="UTF-8">
 	<title>
-		Statistikk: Forslag p&aring; <?php echo $tittel; ?>
+		Statistikk: Forslag p&aring; <?php echo $forslag_tittel; ?>
 	</title>
 	<meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" type="text/css" href="standard.css" />
@@ -91,10 +91,10 @@ $dbtilkopling->close();
 		<em><a href="forslag.php">Les inkomne forslag her.</a><br/></em>
 	</p>
 		<?php
-			echo "<div class='left'>".$sakene."</div>";
-			echo "<div class='right'>".$delegatene."</div>";
+			echo "<div class='left'>".$forslag_sakene."</div>";
+			echo "<div class='right'>".$forslag_delegatene."</div>";
 			// Feilsøke
-			// echo "$resultat $sakErr $linjeErr $delegatErr $namnErr $epostErr $typeErr $captchaErr $forslagErr";
+			// echo "$forslag_resultat $forslag_sakErr $forslag_linjeErr $forslag_delegatErr $forslag_namnErr $forslag_epostErr $forslag_typeErr $forslag_captchaErr $forslag_forslagErr";
 		?>
 	</div>
 </body>
