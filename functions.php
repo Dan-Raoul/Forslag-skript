@@ -3,8 +3,9 @@
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  $data = str_replace("'", "&#39;", $data);
+  $data = htmlentities($data);
+  $data = str_replace("\\", "&bsol;", $data);
+  $data = str_replace("'", "&apos;", $data);
   $data = str_replace('"', "&quot;", $data);
   $data = str_replace("\n", '<br />', $data );
   $data = str_replace("æ", "&aelig;", $data);
