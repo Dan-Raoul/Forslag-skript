@@ -15,3 +15,10 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+*.php -text
+*.css -text
+*.txt -text
+*.html -text
+*.htm -text
+*.md -text
