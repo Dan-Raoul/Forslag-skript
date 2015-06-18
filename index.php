@@ -53,7 +53,7 @@ include 'config.php';
 				<input type="text" id="linje" value="<?php echo $forslag_linje;?>" name="linje" min="1" maxlength="6" required size="6" /><br />
 			<label for="delegat">Delegatnummer: </label> <span class="error">* <?php echo $forslag_delegatErr;?></span><br />
 				<input type="number" id="delegat" value="<?php echo $forslag_delegat;?>" name="delegat" min="1" maxlength="6" required size="6" /><br />
-			<label for="namn">Navn forslagsstiller: </label> <span class="error">* <?php echo forslag_$namnErr;?></span><br />
+			<label for="namn">Navn forslagsstiller: </label> <span class="error">* <?php echo $forslag_namnErr;?></span><br />
 				<input type="text" id="namn" value="<?php echo $forslag_namn;?>" name="namn" required size="25" /><br />
 			<label for="epost">E-post: </label> <span class="error">* <?php echo $forslag_epostErr;?></span><br />
 				<input type="text" id="epost" value="<?php echo $forslag_epost;?>" name="epost" required size="25" /><br />

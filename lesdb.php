@@ -48,7 +48,7 @@ if ($_POST['sortert'] == 'desc') {
 	$forslag_ortert = test_input($_POST['sortert']);
 }
 
-$forslag_result = $dbtilkopling->query($lese_forslag);
+$forslag_result = $forslag_dbtilkopling->query($forslag_lese_forslag);
 
 if ($forslag_result->num_rows > 0) {
     $forslag_forslagene = "

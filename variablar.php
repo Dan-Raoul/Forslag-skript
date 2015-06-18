@@ -1,15 +1,16 @@
 ﻿<?php
 // Variablar som kan settast for bruk
-$forslag_mottaker = ""; // Kven som skal få e-posten
-$forslag_mottaker_namn = ""; // Namn på kven som skal få e-posten
-$forslag_passord = ""; // Captcha-passord.
-$forslag_tittel = ""; // Tittel for arrangement - t.d. HEFLM, HULM m.m.
-$forslag_kontaktperson = ""; // Kven som har ansvaret - dvs. kven dei skal ta kontakt med om det ikkje kjem e-post
-$forslag_baseurl = ""; // Viss me skulle trenge det på eit tidspunkt, er det nyttig å fylle det ut her.
+$forslag_opent 				= FALSE; // Slå av/på skjemaet: TRUE er på, FALSE er av
+$forslag_mottaker 			= ""; // Kven som skal få e-posten
+$forslag_mottaker_namn 		= ""; // Namn på kven som skal få e-posten
+$forslag_passord 			= ""; // Captcha-passord.
+$forslag_tittel 			= ""; // Tittel for arrangement - t.d. HEFLM, HULM m.m.
+$forslag_kontaktperson 		= ""; // Kven som har ansvaret - dvs. kven dei skal ta kontakt med om det ikkje kjem e-post
+$forslag_baseurl 			= ""; // Viss me skulle trenge det på eit tidspunkt, er det nyttig å fylle det ut her.
 
 // Saksliste - fyll inn det du vil ha i formatet: <option value="01/15">01/15 Åpning og konstituering</option>. Viss du ikkje vil ferdig saksliste, vel FALSE på $saksliste_brukes.
-$forslag_saksliste_brukes = TRUE;
-$forslag_saksliste = '
+$forslag_saksliste_brukes 	= TRUE;
+$forslag_saksliste 			= '
 						<option value="01/15">01/15 Åpning og konstituering</option>
 						<option value="01/15a">01/15a Godkjenning av innkalling</option>
 						<option value="01/15b">01/15b Valg av møtefunksjonærer</option>
@@ -39,10 +40,10 @@ $forslag_saksliste = '
 	';
 
 // Kople til database
-$forslag_dbserver = ""; // MySQL-tener
-$forslag_dbbrukar = ""; // og brukarnamn
-$forslag_dbpassord = ""; // og passord
-$forslag_dbnamn = ""; // og databasenamn
-$forslag_dbtabell = "forslag_" . $tittel; // Og kva tabell, med basis i kva tittelen på arrangementet er
+$forslag_dbserver 		= ""; // MySQL-tener
+$forslag_dbbrukar 		= ""; // og brukarnamn
+$forslag_dbpassord 		= ""; // og passord
+$forslag_dbnamn 		= ""; // og databasenamn
+$forslag_dbtabell 		= "forslag_" . $forslag_tittel; // Og kva tabell, med basis i kva tittelen på arrangementet er
 
 ?>
