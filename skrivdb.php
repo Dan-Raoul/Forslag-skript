@@ -3,8 +3,8 @@
 // Kople til databasen
 $forslag_dbtilkopling = new mysqli($forslag_dbserver, $forslag_dbbrukar, $forslag_dbpassord, $forslag_dbnamn);
 // Sjekke tilkopling til databasen
-/*if ($forslag_dbtilkopling->connect_error) {
-    die("Tilkopling feilet: " . $dforslag_btilkopling->connect_error);
+/*if ($forslag_dbtilkopling->connect_errno) {
+    die("Tilkopling feilet: " . $forslag_dbtilkopling->connect_errno . $forslag_dbtilkopling->connect_error);
 } */
 
 // MySQLi OO lage tabell
@@ -32,17 +32,17 @@ if ($forslag_dbtilkopling->query($forslag_lag_tabell) === TRUE) {
 */
 
 // MySQLi OO skriv data
-$forslag_skriv_forslag = "INSERT INTO " . $forslag_dbtabell . " (Sak, Delegat, Namn, Epost, Linje, Type, Forslag, Kommentar, IP, Nettleser, Referent)
-VALUES ('$forslag_sak', '$forslag_delegat', '$forslag_namn', '$forslag_epost', '$forslag_linje', '$forslag_type', '$forslag_forslag', '$forslag_kommentar', '$forslag_ip', '$forslag_nettleser', '$forslag_referent')";
+$forslag_skriv_forslag = $forslag_dbtilkopling->prepare("INSERT INTO " . $forslag_dbtabell . " (Sak, Delegat, Namn, Epost, Linje, Type, Forslag, Kommentar, IP, Nettleser, Referent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$forslag_skriv_forslag->bind_param("sisssssssss", $forslag_sak, $forslag_delegat, $forslag_namn, $forslag_epost, $forslag_linje, $forslag_type, $forslag_forslag, $forslag_kommentar, $forslag_ip, $forslag_nettleser, $forslag_referent);
 
-if ($forslag_dbtilkopling->query($forslag_skriv_forslag) === TRUE) {
+if ($forslag_skriv_forslag->execute()) {
 	$forslag_dbskrevet = 1;
 	$forslag_dbid = mysqli_insert_id($forslag_dbtilkopling);
 	$forslag_dbtilkopling_status = "Forslag lagret i databasen. Ditt forslag er digitalt forslag nr. " . $forslag_dbid;
 } else {
 	$forslag_dbskrevet = 0;
 	$forslag_dbid = mysqli_insert_id($forslag_dbtilkopling);
-	$forslag_dbtilkopling_status = "Feil ved lagring av forslag i databasen: " . $forslag_skriv_forslag . "<br/>" . $forslag_dbtilkopling->error;
+	$forslag_dbtilkopling_status = "Feil ved lagring av forslag i databasen.";
 	$forslag_emne = "Feil ved skriving til database: " . $forslag_dbtilkopling->error;
 	$forslag_melding	=	'
 				<html>
@@ -72,5 +72,6 @@ if ($forslag_dbtilkopling->query($forslag_skriv_forslag) === TRUE) {
 	mail($forslag_mottaker, $forslag_emne, $forslag_melding, $forslag_hoder);
 }
 
+$forslag_skriv_forslag->close();
 $forslag_dbtilkopling->close();
 ?>

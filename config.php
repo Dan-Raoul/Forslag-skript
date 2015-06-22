@@ -63,6 +63,7 @@ if ($_GET["sendt"] == TRUE) {
 			$forslag_captchaErr = "Passordet er feil. Pr&oslash;v igjen. ";
 		}
 		if (empty($_POST["kommentar"])) {
+			$forslag_kommentar = "&nbsp;";
 			$forslag_kommentaren = "<br/>";
 		} else {
 			$forslag_kommentar = test_input($_POST["kommentar"]);
