@@ -22,3 +22,6 @@
 *.html -text
 *.htm -text
 *.md -text
+
++# We don't want these files in the ZIP-file, so tell GitHub to ignore them when the user click on Download ZIP
++/.gitattributes export-ignore
