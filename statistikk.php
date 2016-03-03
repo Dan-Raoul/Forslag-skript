@@ -4,19 +4,17 @@ include_once('config.php');
 // Kople til databasen
 $forslag_dbtilkopling = new mysqli($forslag_dbserver, $forslag_dbbrukar, $forslag_dbpassord, $forslag_dbnamn);
 // Sjekke tilkopling til databasen
-/*if ($forslag_dbtilkopling->connect_errno) {
-    die("Tilkopling feilet: " . $forslag_dbtilkopling->connect_errno . $forslag_dbtilkopling->connect_error);
+/*if ($dbtilkopling->connect_error) {
+    die("Tilkopling feilet: " . $dbtilkopling->connect_error);
 } */
 
 // Lese frå database
 $forslag_stat_sak ="SELECT id, Sak, COUNT(*) AS freq FROM " . $forslag_dbtabell . " GROUP BY Sak ORDER BY freq DESC";
 
-$forslag_result = $forslag_dbtilkopling->prepare($forslag_stat_sak);
+$forslag_result_sak = $forslag_dbtilkopling->query($forslag_stat_sak);
 
-if($forslag_result->execute()) {
-	$forslag_result->bind_result($forslag_id, $forslag_sak, $forslag_freq);
-	$forslag_result->fetch();
-	$forslag_sakene = "
+if($forslag_result_sak->num_rows > 0) {
+		$forslag_sakene = "
 		<table>
 			<tr>
 				<th>Sak:</th>
@@ -24,11 +22,11 @@ if($forslag_result->execute()) {
 			</tr>
 		";
 		// output data of each row
-		while($forslag_row = $forslag_result->fetch()) {
+		while($forslag_row = mysqli_fetch_assoc($forslag_result_sak)) {
 			$forslag_sakene .= "
 			<tr>
-				<td>".$forslag_sak."</td>
-				<td>".$forslag_freq."</td>
+				<td>".$forslag_row['Sak']."</td>
+				<td>".$forslag_row['freq']."</td>
 			</tr>
 			";
 		}
@@ -41,11 +39,9 @@ else {
 $forslag_stat_delegat ="SELECT id, Delegat, Namn, COUNT(*) AS freq FROM " . $forslag_dbtabell . " GROUP BY Delegat ORDER BY freq DESC";
 
 
-$forslag_result = $forslag_dbtilkopling->prepare($forslag_stat_delegat);
+$forslag_result_delegat = $forslag_dbtilkopling->query($forslag_stat_delegat);
 
-if($forslag_result->execute()) {
-	$forslag_result->bind_result($forslag_id, $forslag_delegat, $forslag_namn, $forslag_freq);
-	$forslag_result->fetch();
+if($forslag_result_delegat->num_rows > 0) {
 		$forslag_delegatene = "
 		<table>
 			<tr>
@@ -55,12 +51,12 @@ if($forslag_result->execute()) {
 			</tr>
 		";
 		// output data of each row
-		while($forslag_row = $forslag_result->fetch()) {
+		while($forslag_row = mysqli_fetch_assoc($forslag_result_delegat)) {
 			$forslag_delegatene .= "
 			<tr>
-				<td>".$forslag_delegat."</td>
-				<td>".$forslag_namn."</td>
-				<td>".$forslag_freq."</td>
+				<td>".$forslag_row['Delegat']."</td>
+				<td>".$forslag_row['Namn']."</td>
+				<td>".$forslag_row['freq']."</td>
 			</tr>
 			";
 		}
@@ -71,7 +67,7 @@ else {
 }
 
 
-$forslag_result->close();
+	
 $forslag_dbtilkopling->close();
 
 ?>

@@ -3,12 +3,12 @@
 // Kople til databasen
 $forslag_dbtilkopling = new mysqli($forslag_dbserver, $forslag_dbbrukar, $forslag_dbpassord, $forslag_dbnamn);
 // Sjekke tilkopling til databasen
-/*if ($forslag_dbtilkopling->connect_errno) {
-    die("Tilkopling feilet: " . $forslag_dbtilkopling->connect_errno . $forslag_dbtilkopling->connect_error);
+/*if ($forslag_dbtilkopling->connect_error) {
+    die("Tilkopling feilet: " . $forslag_dbtilkopling->connect_error);
 } */
 
 // Lese frå database
-$forslag_lese_forslag = "SELECT id, Sak, Delegat, Namn, Linje, Type, Forslag, Kommentar FROM " . $forslag_dbtabell;
+$forslag_lese_forslag ="SELECT id, Sak, Delegat, Namn, Linje, Type, Forslag, Kommentar FROM " . $forslag_dbtabell;
 
 // Søke og kontrollere kva som visast
 if (!empty ($forslag_dbid)) {
@@ -48,11 +48,9 @@ if ($_POST['sortert'] == 'desc') {
 	$forslag_ortert = test_input($_POST['sortert']);
 }
 
-$forslag_result = $forslag_dbtilkopling->prepare($forslag_lese_forslag);
+$forslag_result = $forslag_dbtilkopling->query($forslag_lese_forslag);
 
-if ($forslag_result->execute()) {
-	$forslag_result->bind_result($forslag_id, $forslag_sak, $forslag_delegat, $forslag_namn, $forslag_linje, $forslag_type, $forslag_forslag, $forslag_kommentar);
-	$forslag_result->fetch();
+if ($forslag_result->num_rows > 0) {
     $forslag_forslagene = "
 		<table>
 			<tr>
@@ -67,17 +65,17 @@ if ($forslag_result->execute()) {
 			</tr>
 		";
     // output data of each row
-    while($forslag_row = $forslag_result->fetch()) {
+    while($forslag_row = mysqli_fetch_assoc($forslag_result)) {
         $forslag_forslagene .= "
 		<tr>
-			<td>".$forslag_id."</td>
-			<td>".$forslag_sak."</td>
-			<td>".$forslag_delegat."</td>
-			<td>".$forslag_namn."</td>
-			<td>".$forslag_linje."</td>
-			<td>".$forslag_type."</td>
-			<td class='brei-f'>".$forslag_forslag."</td>
-			<td class='brei-k'>".$forslag_kommentar."</td>
+			<td>".$forslag_row['id']."</td>
+			<td>".$forslag_row['Sak']."</td>
+			<td>".$forslag_row['Delegat']."</td>
+			<td>".$forslag_row['Namn']."</td>
+			<td>".$forslag_row['Linje']."</td>
+			<td>".$forslag_row['Type']."</td>
+			<td class='brei-f'>".$forslag_row['Forslag']."</td>
+			<td class='brei-k'>".$forslag_row['Kommentar']."</td>
 		</tr>
 		";
     }
@@ -106,7 +104,6 @@ if (!mysqli_set_charset($forslag_dbtilkopling, "utf8")) {
 	$forslag_resultat .= "<p>Spørring: " . $forslag_lese_forslag . "<br/>Variablar: " . $forslag_variablar . "</p>";
 */
 	
-$forslag_result->close();
 $forslag_dbtilkopling->close();
 
 ?>
