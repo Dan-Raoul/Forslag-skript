@@ -55,12 +55,12 @@ if ($_GET["sendt"] == TRUE) {
 		} else {
 			$forslag_forslag = test_input($_POST["forslag"]);
 		}
-		if (empty($_POST["captcha"])) {
-			$forslag_captchaErr = "Passordet er obligatorisk";
-		} elseif (($_POST["captcha"]) == $forslag_passord){
-			$forslag_captcha = test_input($_POST["captcha"]);
+		if (empty($_POST["pass"])) {
+			$forslag_passErr = "Passordet er obligatorisk";
+		} elseif (($_POST["pass"]) == $forslag_passord){
+			$forslag_pass = test_input($_POST["pass"]);
 		} else {
-			$forslag_captchaErr = "Passordet er feil. Pr&oslash;v igjen. ";
+			$forslag_passErr = "Passordet er feil. Pr&oslash;v igjen. ";
 		}
 		if (empty($_POST["kommentar"])) {
 			$forslag_kommentar = "&nbsp;";
@@ -71,11 +71,11 @@ if ($_GET["sendt"] == TRUE) {
 		}
 	
 		// Gi beskjed viss noko manglar
-		if (!empty ($forslag_sakErr) || !empty ($forslag_linjeErr) || !empty ($forslag_delegatErr) || !empty ($forslag_namnErr) || !empty ($forslag_epostErr) || !empty ($forslag_typeErr) || !empty ($forslag_captchaErr) || !empty ($forslag_forslagErr) || empty ($forslag_sak) || empty ($forslag_linje) || empty ($forslag_delegat) || empty ($forslag_namn) || empty ($forslag_epost) || empty ($forslag_type) || empty ($forslag_forslag) || empty ($forslag_captcha)) {
+		if (!empty ($forslag_sakErr) || !empty ($forslag_linjeErr) || !empty ($forslag_delegatErr) || !empty ($forslag_namnErr) || !empty ($forslag_epostErr) || !empty ($forslag_typeErr) || !empty ($forslag_passErr) || !empty ($forslag_forslagErr) || empty ($forslag_sak) || empty ($forslag_linje) || empty ($forslag_delegat) || empty ($forslag_namn) || empty ($forslag_epost) || empty ($forslag_type) || empty ($forslag_forslag) || empty ($forslag_pass)) {
 			$forslag_resultat		=	"Fyll ut skjemaet:";
-			$forslag_resultat		.=	"<br/><a href='javascript: history.go(-1)'>$forslag_sakErr $forslag_linjeErr $forslag_delegatErr $forslag_namnErr $forslag_epostErr $forslag_typeErr $forslag_captchaErr $forslag_forslagErr</a>";
+			$forslag_resultat		.=	"<br/><a href='javascript: history.go(-1)'>$forslag_sakErr $forslag_linjeErr $forslag_delegatErr $forslag_namnErr $forslag_epostErr $forslag_typeErr $forslag_passErr $forslag_forslagErr</a>";
 			// Feilsøking:
-			//$forslag_resultat		.= "<br/>Feil (skal være tom): $forslag_sakErr $forslag_linjeErr $forslag_delegatErr $forslag_namnErr $forslag_epostErr $forslag_typeErr $forslag_captchaErr $forslag_forslagErr <br/>Sendt (skal ikke være tom): Sak: $forslag_sak Linje: $forslag_linje Delegat: $forslag_delegat Navn: $forslag_namn E-post: $forslag_epost Type: $forslag_type Forslag: $forslag_forslag Passord: $forslag_captcha";
+			//$forslag_resultat		.= "<br/>Feil (skal være tom): $forslag_sakErr $forslag_linjeErr $forslag_delegatErr $forslag_namnErr $forslag_epostErr $forslag_typeErr $forslag_passErr $forslag_forslagErr <br/>Sendt (skal ikke være tom): Sak: $forslag_sak Linje: $forslag_linje Delegat: $forslag_delegat Navn: $forslag_namn E-post: $forslag_epost Type: $forslag_type Forslag: $forslag_forslag Passord: $forslag_pass";
 		}
 		else {
 			// Skrive til databasen
@@ -116,7 +116,7 @@ if ($_GET["sendt"] == TRUE) {
 				// Gi beskjed om at det er sendt, viss så er tilfelle
 				$resultat		=	"Ditt forslag er sendt til $forslag_mottaker. Du vil f&aring; kopi til din e-post. Ta kontakt med $forslag_kontaktperson hvis dette ikke er tilfellet.";
 				$resultattype	=	"sendt";
-				$captcha		=	"FEIL";
+				$pass		=	"FEIL";
 				// Og sende dei dit dei skal!
 				redirect("forslag.php?registrert=$forslag_dbid");
 			}

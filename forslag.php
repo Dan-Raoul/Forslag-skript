@@ -89,7 +89,7 @@ include 'lesdb.php';
 		<?php
 			echo $forslag_forslagene;
 			// Feilsøke
-			// echo "$forslag_resultat $forslag_sakErr $forslag_linjeErr $forslag_delegatErr $forslag_namnErr $forslag_epostErr $forslag_typeErr $forslag_captchaErr $forslag_forslagErr";
+			// echo "$forslag_resultat $forslag_sakErr $forslag_linjeErr $forslag_delegatErr $forslag_namnErr $forslag_epostErr $forslag_typeErr $forslag_passErr $forslag_forslagErr";
 		?>
 	</div>
 </body>

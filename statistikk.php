@@ -94,7 +94,7 @@ $forslag_dbtilkopling->close();
 			echo "<div class='left'>".$forslag_sakene."</div>";
 			echo "<div class='right'>".$forslag_delegatene."</div>";
 			// Feilsøke
-			// echo "$forslag_resultat $forslag_sakErr $forslag_linjeErr $forslag_delegatErr $forslag_namnErr $forslag_epostErr $forslag_typeErr $forslag_captchaErr $forslag_forslagErr";
+			// echo "$forslag_resultat $forslag_sakErr $forslag_linjeErr $forslag_delegatErr $forslag_namnErr $forslag_epostErr $forslag_typeErr $forslag_passErr $forslag_forslagErr";
 		?>
 	</div>
 </body>

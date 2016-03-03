@@ -3,7 +3,7 @@
 $forslag_opent 				= FALSE; // Slå av/på skjemaet: TRUE er på, FALSE er av
 $forslag_mottaker 			= ""; // Kven som skal få e-posten
 $forslag_mottaker_namn 		= ""; // Namn på kven som skal få e-posten
-$forslag_passord 			= ""; // Captcha-passord.
+$forslag_passord 			= ""; // Passord.
 $forslag_tittel 			= ""; // Tittel for arrangement - t.d. HEFLM, HULM m.m.
 $forslag_kontaktperson 		= ""; // Kven som har ansvaret - dvs. kven dei skal ta kontakt med om det ikkje kjem e-post
 $forslag_baseurl 			= ""; // Viss me skulle trenge det på eit tidspunkt, er det nyttig å fylle det ut her.

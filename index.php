@@ -65,8 +65,8 @@ include 'config.php';
 				<textarea id="forslag" name="forslag" required><?php echo $forslag_forslag;?></textarea><br />
 			<label for="kommentar">Kommentar/begrunnelse: </label><br />
 				<textarea id="kommentar" name="kommentar"><?php echo $forslag_kommentar;?></textarea><br />
-			<label for="captcha">Passord? </label> <span class="error">* <?php echo $forslag_captchaErr;?></span><br />
-				<input type="password" id="captcha" value="<?php echo $forslag_captcha;?>" name="captcha" required size="25" /><br /><br />
+			<label for="pass">Passord? </label> <span class="error">* <?php echo $forslag_passErr;?></span><br />
+				<input type="password" id="pass" value="<?php echo $forslag_pass;?>" name="pass" required size="25" /><br /><br />
 			<input type="submit" class="button" value="Send forslag" />
 			<input type="reset" class="button" value="Tilbakestill" />
 		</form>
