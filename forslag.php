@@ -83,7 +83,7 @@ include 'lesdb.php';
 		?>
 	<h2>Innkomne digitale forslag</h2><br/>
 	<p>
-		<em><a href="/">Send inn forslag her.</a><br/></em><br/>
+		<em><a href="<?php echo $forslag_baseurl; ?>">Send inn forslag her.</a><br/></em><br/>
 		<em><a href="statistikk.php">Se statistikk på innkomne forslag.</a><br/></em>
 	</p>
 		<?php

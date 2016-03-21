@@ -30,7 +30,7 @@ include 'config.php';
 			<?php
 			if ($forslag_saksliste_brukes === TRUE) {
 				echo '
-					<label for="sak">Saksnummer: (f.eks. 23/15a)</label> ' . $forslag_sakvalt . '<span class="error">* <?php echo $forslag_sakErr;?></span><br />
+					<label for="sak">Saksnummer: (f.eks. 23/15a)</label> ' . $forslag_sakvalt . '<span class="error">* <?php echo $forslag_skjemaErr["sak"];?></span><br />
 						<input list="sak" name="sak">
 						<!--[if IE]><select disabled style="display:none"><![endif]-->
 							<datalist name="sak" id="sak">
@@ -42,30 +42,30 @@ include 'config.php';
 			}
 			else {
 				echo '
-					<label for="sak">Saksnummer: (f.eks. 23/15a)</label> <span class="error">* <?php echo $forslag_sakErr;?></span><br />
+					<label for="sak">Saksnummer: (f.eks. 23/15a)</label> <span class="error">* <?php echo $forslag_skjemaErr["sak"];?></span><br />
 					<input type="text" id="sak" value="';
 				echo $forslag_sak;
 				echo '" name="sak" maxlength="6" size="6" /><br />
 				';
 			}
 			?>
-			<label for="linje">Linjenummer: </label> <span class="error">* <?php echo $forslag_linjeErr;?></span><br />
+			<label for="linje">Linjenummer: </label> <span class="error">* <?php echo $forslag_skjemaErr["linje"];?></span><br />
 				<input type="text" id="linje" value="<?php echo $forslag_linje;?>" name="linje" min="1" maxlength="6" required size="6" /><br />
-			<label for="delegat">Delegatnummer: </label> <span class="error">* <?php echo $forslag_delegatErr;?></span><br />
+			<label for="delegat">Delegatnummer: </label> <span class="error">* <?php echo $forslag_skjemaErr["delegat"];?></span><br />
 				<input type="number" id="delegat" value="<?php echo $forslag_delegat;?>" name="delegat" min="1" maxlength="6" required size="6" /><br />
-			<label for="namn">Navn forslagsstiller: </label> <span class="error">* <?php echo $forslag_namnErr;?></span><br />
+			<label for="namn">Navn forslagsstiller: </label> <span class="error">* <?php echo $forslag_skjemaErr["namn"];?></span><br />
 				<input type="text" id="namn" value="<?php echo $forslag_namn;?>" name="namn" required size="25" /><br />
-			<label for="epost">E-post: </label> <span class="error">* <?php echo $forslag_epostErr;?></span><br />
+			<label for="epost">E-post: </label> <span class="error">* <?php echo $forslag_skjemaErr["epost"];?></span><br />
 				<input type="text" id="epost" value="<?php echo $forslag_epost;?>" name="epost" required size="25" /><br />
-			<label for="type">Forslagstype: </label> <span class="error">* <?php echo $forslag_typeErr;?></span><br />
+			<label for="type">Forslagstype: </label> <span class="error">* <?php echo $forslag_skjemaErr["type"];?></span><br />
 				<input type="radio" class="radio" id="type" name="type" value="Endring" <?php if (!empty ($_POST["Endring"])) { echo "checked";}?>>Endring</input><br />
 				<input type="radio" class="radio" id="type" name="type" value="Tillegg" <?php if (!empty ($_POST["Tillegg"])) { echo "checked";}?>>Tillegg</input><br />
 				<input type="radio" class="radio" id="type" name="type" value="Strykning" <?php if (!empty ($_POST["Strykning"])) { echo "checked";}?>>Strykning</input><br />
-			<label for="forslag">Forslagstekst: </label> <span class="error">* <?php echo $forslag_forslagErr;?></span><br />
+			<label for="forslag">Forslagstekst: </label> <span class="error">* <?php echo $forslag_skjemaErr["forslag"];?></span><br />
 				<textarea id="forslag" name="forslag" required><?php echo $forslag_forslag;?></textarea><br />
 			<label for="kommentar">Kommentar/begrunnelse: </label><br />
 				<textarea id="kommentar" name="kommentar"><?php echo $forslag_kommentar;?></textarea><br />
-			<label for="pass">Passord? </label> <span class="error">* <?php echo $forslag_passErr;?></span><br />
+			<label for="pass">Passord? </label> <span class="error">* <?php echo $forslag_skjemaErr["pass"];?></span><br />
 				<input type="password" id="pass" value="<?php echo $forslag_pass;?>" name="pass" required size="25" /><br /><br />
 			<input type="submit" class="button" value="Send forslag" />
 			<input type="reset" class="button" value="Tilbakestill" />
