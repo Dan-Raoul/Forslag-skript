@@ -2,7 +2,7 @@
 	// Formatere e-post
 	$forslag_til			=	"$forslag_mottaker_namn<$forslag_mottaker>";
 	$forslag_cc			=	$forslag_epost;
-	$forslag_emne	=	"Nytt forslag til $forslag_tittel-sak $forslag_sak";
+	$forslag_emne	=	"Nytt forslag (nr. $forslag_dbid) til $forslag_tittel-sak $forslag_sak";
 	$forslag_melding	=	'
 						<html>
 							<head>
