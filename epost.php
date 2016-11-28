@@ -1,8 +1,9 @@
 <?php
 	// Formatere e-post
-	$forslag_til			=	"$forslag_mottaker_namn<$forslag_mottaker>";
+	$forslag_til		=	"$forslag_mottaker_namn<$forslag_mottaker>";
 	$forslag_cc			=	$forslag_epost;
-	$forslag_emne	=	"Nytt forslag (nr. $forslag_dbid) til $forslag_tittel-sak $forslag_sak";
+	$forslag_emne		=	"Nytt forslag (nr. $forslag_dbid) til $forslag_tittel-sak $forslag_sak";
+	$forslag_messageid	=	time() .'-' . md5($forslag_til . $forslag_cc) . "@" . $forslag_tittel . "." . $forslag_epost_domene;
 	$forslag_melding	=	'
 						<html>
 							<head>
@@ -26,6 +27,9 @@
 				$forslag_hoder	=	"Cc: $forslag_epost" . "\r\n" .
 								"From: $forslag_til" . "\r\n" .
 								"Reply-To: $forslag_til" . "\r\n" .
+								"Return-Path: $forslag_til" . "\r\n" .
+								"Errors-To: $forslag_til" . "\r\n" .
+								"Message-ID: $forslag_messageid" . "\r\n" .
 								"MIME-Version: 1.0" . "\r\n" .
 								"Content-type: text/html; charset=UTF-8" . "\r\n" .
 								"X-mailer: PHP/" . phpversion();

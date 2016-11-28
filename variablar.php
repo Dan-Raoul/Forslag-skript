@@ -7,6 +7,7 @@ $forslag_passord 			= ""; // Passord.
 $forslag_tittel 			= ""; // Tittel for arrangement - t.d. HEFLM, HULM m.m.
 $forslag_kontaktperson 		= ""; // Kven som har ansvaret - dvs. kven dei skal ta kontakt med om det ikkje kjem e-post
 $forslag_baseurl 			= ""; // Viss me skulle trenge det på eit tidspunkt, er det nyttig å fylle det ut her.
+$forslag_epost_domene		= ""; // Brukast til diverse e-postrelaterte settings
 $forslag_dbtabell_oppretta	= FALSE; // Settast manuelt til TRUE når ein har oppretta databasetabell via start.php
 
 // Saksliste - fyll inn det du vil ha i formatet: <option value="01/15">01/15 Åpning og konstituering</option>. Viss du ikkje vil ferdig saksliste, vel FALSE på $saksliste_brukes.

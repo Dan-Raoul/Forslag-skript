@@ -5,8 +5,11 @@ include_once("variablar.php");
 include_once("functions.php");
 
 // Startar med å sjekke at det er fylt ut variablar
-if (empty($forslag_mottaker) || empty($forslag_mottaker_namn) || empty($forslag_passord) || empty($forslag_tittel) || empty($forslag_kontaktperson) || empty($forslag_baseurl) || empty($forslag_saksliste_brukes) || empty($forslag_saksliste) || empty($forslag_dbserver) || empty($forslag_dbbrukar) || empty($forslag_dbpassord) || empty($forslag_dbnamn)) {
+if (empty($forslag_mottaker) || empty($forslag_mottaker_namn) || empty($forslag_passord) || empty($forslag_tittel) || empty($forslag_kontaktperson) || empty($forslag_baseurl) || empty($forslag_epost_domene) || empty($forslag_saksliste_brukes) || empty($forslag_saksliste) || empty($forslag_dbserver) || empty($forslag_dbbrukar) || empty($forslag_dbpassord) || empty($forslag_dbnamn)) {
 	die("Du har ikke satt variablene. Gjør det før bruk.");
+}
+elseif ($forslag_dbtabell_oppretta !== TRUE) {
+	die("Du må gå til start.php for å opprette databasetabellen.");
 }
 elseif ($forslag_opent !== TRUE) {
 	die("Skjemaet er stengt inntil videre.");
