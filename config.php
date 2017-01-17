@@ -9,7 +9,12 @@ if (empty($forslag_mottaker) || empty($forslag_mottaker_namn) || empty($forslag_
 	die("Du har ikke satt variablene. Gjør det før bruk.");
 }
 elseif ($forslag_dbtabell_oppretta !== TRUE) {
-	die("Du må gå til start.php for å opprette databasetabellen.");
+	if ($_SERVER["PHP_SELF"]  == "/start.php"){
+		
+	}
+	else {
+		die("Du må gå til start.php for å opprette databasetabellen." . $_SERVER["PHP_SELF"] );
+	}
 }
 elseif ($forslag_opent !== TRUE) {
 	die("Skjemaet er stengt inntil videre.");

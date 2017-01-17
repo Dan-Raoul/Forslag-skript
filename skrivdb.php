@@ -3,9 +3,9 @@
 // Kople til databasen
 $forslag_dbtilkopling = new mysqli($forslag_dbserver, $forslag_dbbrukar, $forslag_dbpassord, $forslag_dbnamn);
 // Sjekke tilkopling til databasen
-/*if ($forslag_dbtilkopling->connect_errno) {
+if ($forslag_dbtilkopling->connect_errno) {
     die("Tilkopling feilet: " . $forslag_dbtilkopling->connect_errno . $forslag_dbtilkopling->connect_error);
-} */
+} 
 
 // MySQLi OO skriv data
 $forslag_skriv_forslag = $forslag_dbtilkopling->prepare("INSERT INTO " . $forslag_dbtabell . " (Sak, Delegat, Namn, Epost, Linje, Type, Forslag, Kommentar, IP, Nettleser, Referent) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");

@@ -4,9 +4,9 @@ include_once('config.php');
 // Kople til databasen
 $forslag_dbtilkopling = new mysqli($forslag_dbserver, $forslag_dbbrukar, $forslag_dbpassord, $forslag_dbnamn);
 // Sjekke tilkopling til databasen
-/*if ($dbtilkopling->connect_error) {
-    die("Tilkopling feilet: " . $dbtilkopling->connect_error);
-} */
+if ($forslag_dbtilkopling->connect_errno) {
+    die("Tilkopling feilet: " . $forslag_dbtilkopling->connect_errno . $forslag_dbtilkopling->connect_error);
+} 
 
 // Lese frå database
 $forslag_stat_sak ="SELECT id, Sak, COUNT(*) AS freq FROM " . $forslag_dbtabell . " GROUP BY Sak ORDER BY freq DESC";
@@ -80,6 +80,7 @@ $forslag_dbtilkopling->close();
 	</title>
 	<meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" type="text/css" href="standard.css" />
+	<script src="standard.js"></script>
 	<style>
 	</style>
 </head>

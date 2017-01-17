@@ -30,6 +30,7 @@ Fyll ut variablar i variablar.php. Du må ha ein MySQL-database tilgjengeleg, me
 * robots.txt - For å avgrense søkemotorar frå å indeksere forslag. Trengs ikkje brukast, men anbefalast. Browsershots er tillatt for å sjekke korleis skjemaet ser ut.
 * skrivdb.php - For å skrive innkomne forslag. Brukast i hovudsak av index.php. Ein må avkommentere (og så kommentera ut igjen) tabellopprettinga ved første gongs bruk, etter det skal det vere ganske sjølvgåande. Forsiktig bruk.
 * standard.css - Stilark. Brukast for å få skjemaet til å sjå ut som ein vil det skal sjå ut. Kan tilpassast så mykje ein vil, men ein bør vere forsiktig - akkurat no skal skjemaet fungere greitt uavhengig av nettlesar og plattform.
+* standard.js - JavaScript. Brukast til diverse funksjonar gjennom skjemaet. Ikkje rør.
 * start.php - Side til å lage databasetabell. Inkluderar lagdb.php ved riktig passord.
 * statistikk.php - Brukast for å vise kva sak som har fått flest forslag, samt kva delegat som har sendt inn flest forslag. Gimmick, som ikkje trengs - men slett lenkje til på index.php og forslag.php viss den ikkje skal brukast.
 * variablar.php - Bruast for å sette variablar til bruk i skjemaet. Må tilpassast før bruk, men hald deg innanfor "" eller ''.

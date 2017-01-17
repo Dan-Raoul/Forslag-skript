@@ -10,6 +10,7 @@ include 'config.php';
 	</title>
 	<meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" type="text/css" href="standard.css" />
+	<script src="standard.js"></script>
 </head>
 
 <body>

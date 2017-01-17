@@ -3,9 +3,9 @@
 // Kople til databasen
 $forslag_dbtilkopling = new mysqli($forslag_dbserver, $forslag_dbbrukar, $forslag_dbpassord, $forslag_dbnamn);
 // Sjekke tilkopling til databasen
-/*if ($forslag_dbtilkopling->connect_error) {
-    die("Tilkopling feilet: " . $forslag_dbtilkopling->connect_error);
-} */
+if ($forslag_dbtilkopling->connect_errno) {
+    die("Tilkopling feilet: " . $forslag_dbtilkopling->connect_errno . $forslag_dbtilkopling->connect_error);
+} 
 
 // Lese frå database
 $forslag_lese_forslag ="SELECT id, Sak, Delegat, Namn, Linje, Type, Forslag, Kommentar FROM " . $forslag_dbtabell;

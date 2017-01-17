@@ -10,21 +10,9 @@ include 'lesdb.php';
 	</title>
 	<meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" type="text/css" href="standard.css" />
-	<style>
-	</style>
+	<script src="standard.js"></script>
 </head>
 <body>
-<script type="text/javascript">
-<!--
-    function toggle_visibility(id) {
-       var e = document.getElementById(id);
-       if(e.style.display == 'block')
-          e.style.display = 'none';
-       else
-          e.style.display = 'block';
-    }
-//-->
-</script>
 	<div id="header">
 		<h1 onclick="toggle_visibility('avgrensboks');"<?php if ($_GET["submit"] === TRUE) { echo ' style="display:block;"';} ?>>Avgrens s&oslash;ket:</h1>
 	</div>
@@ -69,7 +57,7 @@ include 'lesdb.php';
 				<input type="radio" class="radio" id="sortert" name="sortert" value="asc" <?php if (!empty ($forslag_asc)) { echo "checked";}?>>Stigende</input><br />
 				<input type="radio" class="radio" id="sortert" name="sortert" value="desc" <?php if (!empty ($forslag_desc)) { echo "checked";}?>>Synkende</input><br />
 			<input type="submit" class="button" value="Søk" />
-			<input type="reset" class="button" value="Tilbakestill" />
+			<input type="reset" class="button" value="Tilbakestill" onclick="return resetForm(this.form);" />
 		</form>
 	</div>
 	<div id="forslagsboks">
