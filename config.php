@@ -13,7 +13,7 @@ elseif ($forslag_dbtabell_oppretta !== TRUE) {
 		
 	}
 	else {
-		die("Du må gå til start.php for å opprette databasetabellen." . $_SERVER["PHP_SELF"] );
+		die("Du må gå til start.php for å opprette databasetabellen.");
 	}
 }
 elseif ($forslag_opent !== TRUE) {

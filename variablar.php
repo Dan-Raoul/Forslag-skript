@@ -42,10 +42,11 @@ $forslag_saksliste 			= '
 	';
 
 // Kople til database
-$forslag_dbserver 		= ""; // MySQL-tener
-$forslag_dbbrukar 		= ""; // og brukarnamn
+$forslag_dbserver 			= ""; // MySQL-tener
+$forslag_dbbrukar 			= ""; // og brukarnamn
 $forslag_dbpassord 		= ""; // og passord
-$forslag_dbnamn 		= ""; // og databasenamn
-$forslag_dbtabell 		= "forslag_" . $forslag_tittel; // Og kva tabell, med basis i kva tittelen på arrangementet er
+$forslag_dbnamn 			= ""; // og databasenamn
+$forslag_dbteiknkoding	=	"utf8"; // og teiknkoding - la helst stå
+$forslag_dbtabell 			= "forslag_" . $forslag_tittel; // Og kva tabell, med basis i kva tittelen på arrangementet er
 
 ?>

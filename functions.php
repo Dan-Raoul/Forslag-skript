@@ -44,5 +44,18 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 $forslag_nettleser 		= 	test_input($_SERVER['HTTP_USER_AGENT']);
 $forslag_referent		=	test_input($_SERVER['HTTP_REFERER']);
 
+// Sette datetime for skriving til database
+date_default_timezone_set('Europe/Oslo');
+$forslag_tid				=	date('Y-m-d H:i:s');
+
+// Sette opp PDO - kople til database
+$forslag_pdo_dsn		=	"mysql:host=$forslag_dbserver;dbname=$forslag_dbnamn;charset=$forslag_dbteiknkoding";
+$forslag_pdo_opt		=	[
+    PDO::ATTR_ERRMODE            				=> 	PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE 		=> 	PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   			=> 	FALSE,
+];
+$forslag_pdo_pdo		=	new PDO($forslag_pdo_dsn, $forslag_dbbrukar, $forslag_dbpassord, $forslag_pdo_opt);
+
 
 ?>

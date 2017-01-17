@@ -1,13 +1,6 @@
 <?php
 
-// Kople til databasen
-$forslag_dbtilkopling = new mysqli($forslag_dbserver, $forslag_dbbrukar, $forslag_dbpassord, $forslag_dbnamn);
-// Sjekke tilkopling til databasen
-if ($forslag_dbtilkopling->connect_errno) {
-    die("Tilkopling feilet: " . $forslag_dbtilkopling->connect_errno . $forslag_dbtilkopling->connect_error);
-} 
-
-// MySQLi OO lage tabell
+// PDO lage tabell $forslag_pdo_pdo
 
 $forslag_lag_tabell = "CREATE TABLE " . $forslag_dbtabell . " (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
@@ -22,14 +15,15 @@ Kommentar LONGTEXT NOT NULL,
 IP VARCHAR(20) NOT NULL,
 Nettleser VARCHAR(255) NOT NULL,
 Referent VARCHAR(255) NOT NULL,
-reg_date TIMESTAMP
+Registrert DATETIME  NOT NULL
 )";
-if ($forslag_dbtilkopling->query($forslag_lag_tabell) === TRUE) {
-	$forslag_dbtilkopling_status = "Tabell opprettet.";
-} else {
-	$forslag_dbtilkopling_status = "Feil under opprettelsen av tabell: " . $forslag_dbtilkopling->error;
-}
 
-$forslag_dbtilkopling->close();
+try {
+	$forslag_pdo_pdo->exec($forslag_lag_tabell);
+	$forslag_dbtilkopling_status = "Tabell opprettet.";
+}
+catch(PDOException $forslag_pdo_error) {
+		$forslag_dbtilkopling_status = "Feil under opprettelsen av tabell: " . $forslag_lag_tabell . "<br/>" . $forslag_pdo_error->getMessage();
+}
 
 ?>
