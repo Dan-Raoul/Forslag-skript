@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include 'config.php';
 ?>
 <!DOCTYPE html>
@@ -18,10 +18,10 @@ include 'config.php';
 if ($forslag_dbtabell_oppretta == TRUE) {
 	echo "Alt klart her!";
 }
-elseif ($_post["pass"] == $forslag_passord) {
+elseif ($_POST["pass"] == $forslag_passord) {
 	include 'lagdb.php';
 	echo $forslag_dbtilkopling_status;
-	echo "<br/>Oppdater variablene, og ta s� i bruk skjemaet."
+	echo "<br/>Oppdater variablene, og ta så i bruk skjemaet.";
 }
 else {
 	echo "Skriv inn passordet:<br/><form action='?' method='post' accept-charset='utf-8'><input type='password' name='pass' /><br/><input type='submit' class='button' value='Start' /></form>";

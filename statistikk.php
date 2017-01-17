@@ -33,7 +33,7 @@ if($forslag_result_sak->num_rows > 0) {
 		$forslag_sakene .= "</table>";
 }
 else {
-	$forslag_sakene = "Ingen statistikk.";
+	$forslag_sakene = "";
 }
 
 $forslag_stat_delegat ="SELECT id, Delegat, Namn, COUNT(*) AS freq FROM " . $forslag_dbtabell . " GROUP BY Delegat ORDER BY freq DESC";
@@ -63,7 +63,7 @@ if($forslag_result_delegat->num_rows > 0) {
 		$forslag_delegatene .= "</table>";
 }
 else {
-	$forslag_delegatene = "Ingen statistikk.";
+	$forslag_delegatene = "";
 }
 
 
@@ -92,8 +92,13 @@ $forslag_dbtilkopling->close();
 		<em><a href="forslag.php">Les inkomne forslag her.</a><br/></em>
 	</p>
 		<?php
-			echo "<div class='left'>".$forslag_sakene."</div>";
-			echo "<div class='right'>".$forslag_delegatene."</div>";
+			if (empty($forslag_sakene) || empty($forslag_delegatene)) {
+				echo "Ingen statistikk";
+			}
+			else {
+				echo "<div class='left'>".$forslag_sakene."</div>";
+				echo "<div class='right'>".$forslag_delegatene."</div>";
+			}
 			// Feilsøke
 			// echo "$forslag_resultat $forslag_sakErr $forslag_linjeErr $forslag_delegatErr $forslag_namnErr $forslag_epostErr $forslag_typeErr $forslag_passErr $forslag_forslagErr";
 		?>
