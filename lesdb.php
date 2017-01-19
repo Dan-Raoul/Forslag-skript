@@ -15,10 +15,6 @@ if (!empty ($forslag_dbid)) {
 	$forslag_bare_fid = $forslag_dbid;
 	$forslag_lese_forslag .= " WHERE id =" . $forslag_bare_fid;
 }
-elseif (!empty ($_GET["registrert"])){
-	$forslag_bare_fid = test_input ($_GET["registrert"]);
-	$forslag_lese_forslag .= " WHERE id =" . $forslag_bare_fid;
-}
 elseif (!empty ($_POST['fid'])) {
 	$forslag_bare_fid = test_input ($_POST['fid']);
 	$forslag_lese_forslag .= " WHERE id =" . $forslag_bare_fid;

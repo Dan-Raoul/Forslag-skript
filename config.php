@@ -102,7 +102,7 @@ if ($_GET["sendt"] == TRUE) {
 		}
 	}
 }
-elseif (!empty($_GET["registrert"])) {
+elseif (!empty($_GET["fid"])) {
 	$forslag_resultat		=	"Ditt forslag er sendt til $forslag_mottaker. Du vil f&aring; kopi til din e-post. Ta kontakt med $forslag_kontaktperson hvis dette ikke er tilfellet.";
 	$forslag_resultattype	=	"sendt";
 }

@@ -36,7 +36,7 @@ if ($forslag_skriv_forslag->execute()) {
 						<p>Forslagstekst: <br/>' . $forslag_forslag . '</p>
 						' . $forslag_kommentaren . '
 						<p>' . $forslag_dbtilkopling_status . '</p>
-						<p>Sendt fra ' . $forslag_ip . ', med nettleser ' . $forslag_nettleser . ', og ble referert fra ' . $forslag_referent . '</p>
+						<p>Sendt ' . $forslag_tid . ' fra ' . $forslag_ip . ', med nettleser ' . $forslag_nettleser . ', og ble referert fra ' . $forslag_referent . '</p>
 					</body>
 					</html>
 			';
