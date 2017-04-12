@@ -18,17 +18,31 @@ function test_input($data) {
 };
 
 // Vidaresendingsfunksjon
-function redirect($filename) {
-    if (!headers_sent())
-        header('Location: '.$filename);
-    else {
-        echo '<script type="text/javascript">';
-        echo 'window.location.href="'.$filename.'";';
-        echo '</script>';
-        echo '<noscript>';
-        echo '<meta http-equiv="refresh" content="0;url='.$filename.'" />';
-        echo '</noscript>';
-    }
+function redirect($filename, $timer = NULL) {
+	if (!$timer) {
+		if (!headers_sent())
+			header('Location: '.$filename);
+		else {
+			echo '<script type="text/javascript">';
+			echo 'window.location.href="'.$filename.'";';
+			echo '</script>';
+			echo '<noscript>';
+			echo '<meta http-equiv="refresh" content="0;url='.$filename.'" />';
+			echo '</noscript>';
+		}
+	}
+	else {
+		if (!headers_sent())
+			header('Refresh: '.$timer.'; URL='.$filename);
+		else {
+			echo '<script type="text/javascript">';
+			echo 'window.location.href="'.$filename.'";';
+			echo '</script>';
+			echo '<noscript>';
+			echo '<meta http-equiv="refresh" content="'.$timer.';url='.$filename.'" />';
+			echo '</noscript>';
+		}
+	}
 }
 
 // Samle brukarinfo
@@ -55,7 +69,6 @@ $forslag_pdo_opt		=	[
     PDO::ATTR_DEFAULT_FETCH_MODE 		=> 	PDO::FETCH_ASSOC,
     PDO::ATTR_EMULATE_PREPARES   			=> 	FALSE,
 ];
-$forslag_pdo_pdo		=	new PDO($forslag_pdo_dsn, $forslag_dbbrukar, $forslag_dbpassord, $forslag_pdo_opt);
 
 
 ?>

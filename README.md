@@ -18,6 +18,7 @@ Fyll ut variablar i variablar.php. Du må ha ein MySQL-database tilgjengeleg, me
 * .htaccess - For å kontrollere tilgong til serveren (Ved Apache-server).
 * README.md - Denne fila.
 * admin.php - Planlagt plassering for GUI-oppsett. Tom.
+* config.ini.php - Framtidig fil for INI-config.
 * config.php - Hovudfil som driftar heile skriptet. Ikkje rør med mindre du veit godt kva du gjer.
 * epost.php - For å sende e-postar ved skriving til databasen. Forsiktig, men e-post kan tilpassast her.
 * forslag.php - Til å vise frem forslaga. HTML kan lett tilpassast, men ein må vere forsiktig med å øydeleggje PHPen.
