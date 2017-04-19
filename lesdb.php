@@ -19,6 +19,10 @@ elseif (!empty ($_POST['fid'])) {
 	$forslag_bare_fid = test_input ($_POST['fid']);
 	$forslag_lese_forslag .= " WHERE id =" . $forslag_bare_fid;
 }
+elseif (!empty ($_GET['fid'])) {
+	$forslag_bare_fid = test_input ($_GET['fid']);
+	$forslag_lese_forslag .= " WHERE id =" . $forslag_bare_fid;
+}
 if (!empty ($_POST['fsak'])) {
 	$forslag_bare_fsak = test_input($_POST['fsak']);
 	$forslag_lese_forslag .= " WHERE Sak LIKE '" . $forslag_bare_fsak . "%'";
@@ -96,7 +100,7 @@ if (!mysqli_set_charset($forslag_dbtilkopling, "utf8")) {
 	$forslag_variablar .= "Delegat=" . $_POST['Delegat'] . ". ";
 	$forslag_variablar .= "etter=" . $_POST['etter'] . ". ";
 	$forslag_variablar .= "sortert=" . $_POST['sortert'] . ". ";
-	$forslag_variablar = test_input["$forslag_variablar"];
+	$forslag_variablar = test_input($forslag_variablar);
 	$forslag_resultat .= "<p>Spørring: " . $forslag_lese_forslag . "<br/>Variablar: " . $forslag_variablar . "</p>";
 */
 	
