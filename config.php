@@ -27,6 +27,11 @@ if ($_GET["sendt"] == TRUE) {
 			$forslag_skjemaErr['sak'] = "Saksnummer er obligatorisk";
 		} else {
 			$forslag_sak = test_input($_POST["sak"]);
+			$forslag_sak_nummer = explode("/", $forslag_sak, 2);
+			$forslag_sak_nummer_padded = sprintf("%02d", $forslag_sak_nummer[0]);
+			$forslag_sak = $forslag_sak_nummer_padded;
+			$forslag_sak .= "/";
+			$forslag_sak .= $forslag_sak_nummer[1];
 			$forslag_sakvalt = "Du valgte sak <strong>$forslag_sak</strong> i sted. ";
 		}
 		if (empty($_POST["linje"])) {
