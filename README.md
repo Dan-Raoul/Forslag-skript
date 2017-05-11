@@ -27,6 +27,8 @@ Fyll ut variablar i variablar.php. Du må ha ein MySQL-database tilgjengeleg, me
 * lagdb.php - For å lage databasetabell. Ikkje rør.
 * lesdb.php - For å lese innkomne forslag. Brukast av forslag.php. Ikkje rør.
 * oppsett.php - For å sette opp skjemaet. Gjer ingenting per no.
+* PHPMailer-Master - PHPMailer-bibliotek. Hentet frå [PHPMailer på Github](https://github.com/PHPMailer/PHPMailer), bør potensielt hentast på nytt sjølv.
+* phpmailer.php - For å inkludere PHPMailer og sende via SMTP. Må speilast med e-post.php.
 * printdb.php - Ikkje lengre i bruk - skal potensielt slettast.
 * robots.txt - For å avgrense søkemotorar frå å indeksere forslag. Trengs ikkje brukast, men anbefalast. Browsershots er tillatt for å sjekke korleis skjemaet ser ut.
 * skrivdb.php - For å skrive innkomne forslag. Brukast i hovudsak av index.php. Ein må avkommentere (og så kommentera ut igjen) tabellopprettinga ved første gongs bruk, etter det skal det vere ganske sjølvgåande. Forsiktig bruk.

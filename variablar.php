@@ -10,6 +10,11 @@ $forslag_baseurl 			= ""; // Viss me skulle trenge det på eit tidspunkt, er det
 $forslag_epost_domene		= ""; // Brukast til diverse e-postrelaterte settings
 $forslag_dbtabell_oppretta	= FALSE; // Settast manuelt til TRUE når ein har oppretta databasetabell via start.php
 
+// Sette opp SMTP viss det skal brukast
+$forslag_mail_smtp			=	TRUE; // Bruke/ikkje bruke SMTP. TRUE - bruke SMTP, FALSE - bruke sendmail
+$forslag_mail_server			=	""; // SMTP-server
+$forslag_mail_port				=	""; // Port til SMTP-server
+
 // Saksliste - fyll inn det du vil ha i formatet: <option value="01/15">01/15 Åpning og konstituering</option>. Viss du ikkje vil ferdig saksliste, vel FALSE på $saksliste_brukes.
 $forslag_saksliste_brukes 	= TRUE;
 $forslag_saksliste 			= '
