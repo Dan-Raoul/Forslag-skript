@@ -30,16 +30,30 @@ include 'config.php';
 		<form action="?sendt=TRUE" method="post" accept-charset="utf-8">
 			<?php
 			if ($forslag_saksliste_brukes === TRUE) {
-				echo '
-					<label for="sak">Saksnummer: (f.eks. 23/15a)</label> ' . $forslag_sakvalt . '<span class="error">* <?php echo $forslag_skjemaErr["sak"];?></span><br />
-						<input list="sak" name="sak">
-						<!--[if IE]><select disabled style="display:none"><![endif]-->
-							<datalist name="sak" id="sak">
-								' .  $forslag_saksliste . '
-							</datalist>
-							<!--[if IE]></select><![endif]-->
-						</input><br />
-				';
+				if (!empty($forslag_sak)) {
+					echo '
+						<label for="sak">Saksnummer: (f.eks. 12/17a)</label> ' . $forslag_sakvalt . '<span class="error">* <?php echo $forslag_skjemaErr["sak"];?></span><br />
+							<input list="sak" name="sak" value="' . $forslag_sak . '">
+							<!--[if IE]><select disabled style="display:none"><![endif]-->
+								<datalist name="sak" id="sak" value="' . $forslag_sak . '">
+									' .  $forslag_saksliste . '
+								</datalist>
+								<!--[if IE]></select><![endif]-->
+							</input><br />
+					';
+				}
+				else {
+					echo '
+						<label for="sak">Saksnummer: (f.eks. 12/17a)</label> ' . $forslag_sakvalt . '<span class="error">* <?php echo $forslag_skjemaErr["sak"];?></span><br />
+							<input list="sak" name="sak">
+							<!--[if IE]><select disabled style="display:none"><![endif]-->
+								<datalist name="sak" id="sak">
+									' .  $forslag_saksliste . '
+								</datalist>
+								<!--[if IE]></select><![endif]-->
+							</input><br />
+					';					
+				}
 			}
 			else {
 				echo '
