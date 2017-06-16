@@ -14,6 +14,9 @@ $forslag_dbtabell_oppretta	= FALSE; // Settast manuelt til TRUE når ein har opp
 $forslag_mail_smtp			=	TRUE; // Bruke/ikkje bruke SMTP. TRUE - bruke SMTP, FALSE - bruke sendmail
 $forslag_mail_server			=	""; // SMTP-server
 $forslag_mail_port				=	""; // Port til SMTP-server
+$forslag_mail_auth				=	FALSE; // Treng autentisering for SMTP
+$forslag_mail_user				=	""; // Settast viss SMTP treng autentisering
+$forslag_mail_pass			=	""; // Settast viss SMTP treng autentisering
 
 // Saksliste - fyll inn det du vil ha i formatet: <option value="01/15">01/15 Åpning og konstituering</option>. Viss du ikkje vil ferdig saksliste, vel FALSE på $saksliste_brukes.
 $forslag_saksliste_brukes 	= TRUE;

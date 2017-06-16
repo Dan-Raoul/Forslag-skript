@@ -17,20 +17,22 @@ $mail->isSMTP();
 // 0 = off (for production use)
 // 1 = client messages
 // 2 = client and server messages
-$mail->SMTPDebug = 2;
+$mail->SMTPDebug = 0;
 //Ask for HTML-friendly debug output
 $mail->Debugoutput = 'html';
 
 //Set the hostname of the mail server
 $mail->Host = $forslag_mail_server;
 //Set the SMTP port number - likely to be 25, 465 or 587
-//$mail->Port = 25;
+$mail->Port = $forslag_mail_port;
 //Whether to use SMTP authentication
-$mail->SMTPAuth = FALSE;
-//Username to use for SMTP authentication
-//$mail->Username = "yourname@example.com";
-//Password to use for SMTP authentication
-//$mail->Password = "yourpassword";
+$mail->SMTPAuth = $forslag_mail_auth;
+if ($forslag_mail_auth == TRUE) {
+	//Username to use for SMTP authentication
+	$mail->Username = $forslag_mail_user;
+	//Password to use for SMTP authentication
+	$mail->Password = $forslag_mail_pass;
+}
 //Set who the message is to be sent from
 $mail->setFrom($forslag_mottaker, $forslag_mottaker_namn);
 //Set an alternative reply-to address
