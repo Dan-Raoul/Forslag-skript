@@ -35,6 +35,10 @@ if ($_POST['etter'] == 'Sak') {
 	$forslag_lese_forslag .= " ORDER BY Sak";
 	$forslag_etter = test_input($_POST['etter']);
 }
+elseif ($_POST['etter'] == 'Linje') {
+	$forslag_lese_forslag .= " ORDER BY Linje";
+	$forslag_etter = test_input($_POST['etter']);
+}
 elseif ($_POST['etter'] == 'Delegat') {
 	$forslag_lese_forslag .= " ORDER BY Delegat";
 	$forslag_etter = test_input($_POST['etter']);
@@ -66,6 +70,9 @@ if ($forslag_result->num_rows > 0) {
 		";
     // output data of each row
     while($forslag_row = mysqli_fetch_assoc($forslag_result)) {
+		// Ordne formattering for forslag/kommentarer
+		$forslag_row['Forslag'] = allow_formatting($forslag_row['Forslag']);
+		$forslag_row['Kommentar'] = allow_formatting($forslag_row['Kommentar']);
         $forslag_forslagene .= "
 		<tr>
 			<td>".$forslag_row['id']."</td>

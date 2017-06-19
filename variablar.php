@@ -11,7 +11,7 @@ $forslag_epost_domene		= ""; // Brukast til diverse e-postrelaterte settings
 $forslag_dbtabell_oppretta	= FALSE; // Settast manuelt til TRUE når ein har oppretta databasetabell via start.php
 
 // Sette opp SMTP viss det skal brukast
-$forslag_mail_smtp			=	TRUE; // Bruke/ikkje bruke SMTP. TRUE - bruke SMTP, FALSE - bruke sendmail
+$forslag_mail_smtp			=	FALSE; // Bruke/ikkje bruke SMTP. TRUE - bruke SMTP, FALSE - bruke sendmail
 $forslag_mail_server			=	""; // SMTP-server
 $forslag_mail_port				=	""; // Port til SMTP-server
 $forslag_mail_auth				=	FALSE; // Treng autentisering for SMTP

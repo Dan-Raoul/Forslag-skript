@@ -52,6 +52,7 @@ include 'lesdb.php';
 			<label for="etter">Sortert på: </label><br />
 				<input type="radio" class="radio" id="etter" name="etter" value="id" <?php if (!empty ($forslag_bare_id)) { echo "checked";}?>>Nummer</input><br />
 				<input type="radio" class="radio" id="etter" name="etter" value="Sak" <?php if (!empty ($forslag_bare_sak)) { echo "checked";}?>>Sak</input><br />
+				<input type="radio" class="radio" id="etter" name="etter" value="Linje" <?php if (!empty ($forslag_bare_sak)) { echo "checked";}?>>Linjenummer/Kapittel/Avsnitt</input><br />
 				<input type="radio" class="radio" id="etter" name="etter" value="Delegat" <?php if (!empty ($forslag_bare_delegat)) { echo "checked";}?>>Delegat</input><br />
 			<label for="sortert">Sortert: </label><br />
 				<input type="radio" class="radio" id="sortert" name="sortert" value="asc" <?php if (!empty ($forslag_asc)) { echo "checked";}?>>Stigende</input><br />

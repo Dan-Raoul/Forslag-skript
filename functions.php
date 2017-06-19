@@ -17,6 +17,39 @@ function test_input($data) {
   return $data;
 };
 
+// Endre tilbake formattering slik at det verkar - bare bruk ved visning - ikkje ved skrivning til DB!
+function allow_formatting($data) {
+	$data = str_replace("&lt;br /&gt;", "<br />", $data);
+	$data = str_replace("&lt;br/&gt;", "<br />", $data);
+	$data = str_replace("&lt;br&gt;", "<br />", $data);
+	$search = array( 
+                '/\[b\](.*?)\[\/b\]/is', 
+                '/\[i\](.*?)\[\/i\]/is', 
+                '/\[u\](.*?)\[\/u\]/is', 
+                '/\&lt;b\&gt;(.*?)\&lt;\/b\&gt;/is', 
+                '/\&lt;i\&gt;(.*?)\&lt;\/i\&gt;/is', 
+                '/\&lt;u\&gt;(.*?)\&lt;\/u\&gt;/is', 
+                '/\&lt;strong\&gt;(.*?)\&lt;\/strong\&gt;/is', 
+                '/\&lt;em\&gt;(.*?)\&lt;\/em\&gt;/is', 
+                '/\&lt;u\&gt;(.*?)\&lt;\/u\&gt;/is', 
+                '/\&lt;p\&gt;(.*?)\&lt;\/p\&gt;/is', 
+                ); 
+	$replace = array( 
+                '<strong>$1</strong>', 
+                '<em>$1</em>', 
+                '<u>$1</u>', 
+                '<strong>$1</strong>', 
+                '<em>$1</em>', 
+                '<u>$1</u>', 
+                '<strong>$1</strong>', 
+                '<em>$1</em>', 
+                '<u>$1</u>', 
+                '<p>$1</p>', 
+                );
+	$data = preg_replace ($search, $replace, $data);
+	return $data;
+}
+
 // Vidaresendingsfunksjon
 function redirect($filename, $timer = NULL) {
 	if (!$timer) {
