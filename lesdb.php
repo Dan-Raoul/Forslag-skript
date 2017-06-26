@@ -23,33 +23,45 @@ elseif (!empty ($_GET['fid'])) {
 	$forslag_bare_fid = test_input ($_GET['fid']);
 	$forslag_lese_forslag .= " WHERE id =" . $forslag_bare_fid;
 }
-if (!empty ($_POST['fsak'])) {
-	$forslag_bare_fsak = test_input($_POST['fsak']);
+elseif (!empty ($_GET['id'])) {
+	$forslag_bare_id = test_input ($_GET['id']);
+	$forslag_lese_forslag .= " WHERE id =" . $forslag_bare_id;
+}
+if (!empty ($_GET['fsak'])) {
+	$forslag_bare_fsak = test_input($_GET['fsak']);
 	$forslag_lese_forslag .= " WHERE Sak LIKE '" . $forslag_bare_fsak . "%'";
 }
-if (!empty ($_POST['fdelegat'])) {
-	$forslag_bare_fdelegat = test_input ($_POST['fdelegat']);
+if (!empty ($_GET['fdelegat'])) {
+	$forslag_bare_fdelegat = test_input ($_GET['fdelegat']);
 	$forslag_lese_forslag .= " WHERE Delegat =" . $forslag_bare_fdelegat;
 }
-if ($_POST['etter'] == 'Sak') {
+if (preg_match("/id/i",$_GET['etter'])) {
+	$forslag_lese_forslag .= " ORDER BY id";
+	$forslag_etter = test_input($_GET['etter']);
+} 
+if (preg_match("/Sak/i",$_GET['etter'])) {
 	$forslag_lese_forslag .= " ORDER BY Sak";
-	$forslag_etter = test_input($_POST['etter']);
+	$forslag_etter = test_input($_GET['etter']);
 }
-elseif ($_POST['etter'] == 'Linje') {
+if (preg_match("/Linje/i",$_GET['etter'])) {
 	$forslag_lese_forslag .= " ORDER BY Linje";
-	$forslag_etter = test_input($_POST['etter']);
+	$forslag_etter = test_input($_GET['etter']);
 }
-elseif ($_POST['etter'] == 'Delegat') {
+if (preg_match("/Delegat/i",$_GET['etter'])) {
 	$forslag_lese_forslag .= " ORDER BY Delegat";
-	$forslag_etter = test_input($_POST['etter']);
+	$forslag_etter = test_input($_GET['etter']);
 }
-else {
+if (!$forslag_etter) {
 	$forslag_lese_forslag .= " ORDER BY id";
 	$forslag_etter = test_input($_POST['etter']);
 } 
 if ($_POST['sortert'] == 'desc') {
 	$forslag_lese_forslag .= " DESC";
 	$forslag_sortert = test_input($_POST['sortert']);
+}
+elseif ($_GET['sortert'] == 'desc') {
+	$forslag_lese_forslag .= " DESC";
+	$forslag_sortert = test_input($_GET['sortert']);
 }
 
 $forslag_result = $forslag_dbtilkopling->query($forslag_lese_forslag);

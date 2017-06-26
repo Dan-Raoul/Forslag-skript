@@ -14,12 +14,12 @@ include 'lesdb.php';
 </head>
 <body>
 	<div id="header">
-		<h1 onclick="toggle_visibility('avgrensboks');"<?php if ($_GET["submit"] === TRUE) { echo ' style="display:block;"';} ?>>Avgrens s&oslash;ket:</h1>
+		<h1 onclick="toggle_visibility('avgrensboks');">Avgrens s&oslash;ket:</h1>
 	</div>
-	<div id="avgrensboks">
-		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?submit=TRUE" method="post">
-			<label for="fid">Forslagsnummer: </label><br />
-				<input type="text" id="fid" value="<?php echo $forslag_bare_fid;?>" name="fid" size="25" /><br />
+	<div id="avgrensboks"<?php if ($_GET["submit"] == TRUE) { echo ' style="display:block;"';} ?>>
+		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?submit=TRUE" method="get" id="avgrens">
+			<label for="id">Forslagsnummer: </label><br />
+				<input type="text" id="id" value="<?php echo $forslag_bare_id;?>" name="id" size="25" /><br />
 			<?php
 			if ($forslag_saksliste_brukes === TRUE) {
 				echo '
@@ -50,13 +50,13 @@ include 'lesdb.php';
 			<label for="fdelegat">Delegatnummer: </label><br />
 				<input type="number" id="fdelegat" value="<?php echo $forslag_bare_fdelegat;?>" name="fdelegat" maxlength="6" size="6" /><br />
 			<label for="etter">Sortert på: </label><br />
-				<input type="radio" class="radio" id="etter" name="etter" value="id" <?php if (!empty ($forslag_bare_id)) { echo "checked";}?>>Nummer</input><br />
-				<input type="radio" class="radio" id="etter" name="etter" value="Sak" <?php if (!empty ($forslag_bare_sak)) { echo "checked";}?>>Sak</input><br />
-				<input type="radio" class="radio" id="etter" name="etter" value="Linje" <?php if (!empty ($forslag_bare_sak)) { echo "checked";}?>>Linjenummer/Kapittel/Avsnitt</input><br />
-				<input type="radio" class="radio" id="etter" name="etter" value="Delegat" <?php if (!empty ($forslag_bare_delegat)) { echo "checked";}?>>Delegat</input><br />
+				<input type="radio" class="radio" id="etter" name="etter" value="id" <?php if (!$forslag_etter) { echo "checked";}?>>Nummer</input><br />
+				<input type="radio" class="radio" id="etter" name="etter" value="Sak" <?php if (preg_match("/Sak/i",$forslag_etter)) { echo "checked";}?>>Sak</input><br />
+				<input type="radio" class="radio" id="etter" name="etter" value="Linje" <?php if (preg_match("/Linje/i",$forslag_etter)) { echo "checked";}?>>Linjenummer/Kapittel/Avsnitt</input><br />
+				<input type="radio" class="radio" id="etter" name="etter" value="Delegat" <?php if (preg_match("/Delegat/i",$forslag_etter)) { echo "checked";}?>>Delegat</input><br />
 			<label for="sortert">Sortert: </label><br />
-				<input type="radio" class="radio" id="sortert" name="sortert" value="asc" <?php if (!empty ($forslag_asc)) { echo "checked";}?>>Stigende</input><br />
-				<input type="radio" class="radio" id="sortert" name="sortert" value="desc" <?php if (!empty ($forslag_desc)) { echo "checked";}?>>Synkende</input><br />
+				<input type="radio" class="radio" id="sortert" name="sortert" value="asc" <?php if (!$forslag_sortert) { echo "checked";}?>>Stigende</input><br />
+				<input type="radio" class="radio" id="sortert" name="sortert" value="desc" <?php if ($forslag_sortert) { echo "checked";}?>>Synkende</input><br />
 			<input type="submit" class="button" value="Søk" />
 			<input type="reset" class="button" value="Tilbakestill" onclick="return resetForm(this.form);" />
 		</form>
@@ -72,7 +72,7 @@ include 'lesdb.php';
 		?>
 	<h2>Innkomne digitale forslag</h2><br/>
 	<p>
-		<em><a href="<?php echo $forslag_baseurl; ?>">Send inn forslag her.</a><br/></em><br/>
+		<em><a href="<?php echo $forslag_baseurl; ?>">Send inn forslag her.</a></em><br/>
 		<em><a href="statistikk.php">Se statistikk på innkomne forslag.</a><br/></em>
 	</p>
 		<?php

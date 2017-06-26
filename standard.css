@@ -1,6 +1,7 @@
 ﻿body {
 	margin:auto;
 	padding:1.5em;
+	font-family: "Verdana", sans-serif;
 }
 div {
 	clear:both;
@@ -28,6 +29,10 @@ input {
 	max-width: 350px;
 }
 .radio {
+	width:5%;
+	max-width:2em;
+}
+.checkbox {
 	width:5%;
 	max-width:2em;
 }

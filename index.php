@@ -24,7 +24,7 @@ include 'config.php';
 		?>
 		<p>
 			<em><a href="forslag.php">Se innkomne digitale forslag her.</a></em><br/>
-			<em><a href="statistikk.php">Se statistikk på innkomne forslag.</a><br/></em>
+			<em><a href="statistikk.php">Se statistikk på innkomne forslag.</a></em><br/>
 		</p>
 		<p class="error">* obligatorisk felt.</p>
 		<form action="?sendt=TRUE" method="post" accept-charset="utf-8">

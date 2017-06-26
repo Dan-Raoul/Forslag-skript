@@ -32,6 +32,10 @@ if ($_GET["sendt"] == TRUE) {
 			$forslag_sak = $forslag_sak_nummer_padded;
 			$forslag_sak .= "/";
 			$forslag_sak .= $forslag_sak_nummer[1];
+			$forslag_sak_format = "/\A\d{2}[\/]" . $forslag_sak_aar . "[a-z]?/i";
+			if (!preg_match($forslag_sak_format, $forslag_sak)) {
+				$forslag_skjemaErr['sak'] = "Saksnummer er i feil format - det skal være i formatet 05/17a. Du skrev: $forslag_sak";
+			}
 			$forslag_sakvalt = "Du valgte sak <strong>$forslag_sak</strong> i sted. ";
 		}
 		if (empty($_POST["linje"])) {
@@ -59,7 +63,7 @@ if ($_GET["sendt"] == TRUE) {
 			}
 		}
 		if (empty($_POST[type])) {
-			$forslag_skjemaErr[''] = "Forslagstype er obligatorisk";
+			$forslag_skjemaErr['type'] = "Forslagstype er obligatorisk";
 		} else {
 			$forslag_type = test_input($_POST[type]);
 		}
@@ -108,7 +112,8 @@ if ($_GET["sendt"] == TRUE) {
 	}
 }
 elseif (!empty($_GET["fid"])) {
-	$forslag_resultat		=	"Ditt forslag er sendt til $forslag_mottaker. Du vil f&aring; kopi til din e-post. Ta kontakt med $forslag_kontaktperson hvis dette ikke er tilfellet.";
+	$forslag_fid = test_input($_GET["fid"]);
+	$forslag_resultat		=	"Ditt forslag <a href='$forslag_baseurl/forslag.php?fid=$forslag_fid'>nr. $forslag_fid</a> er sendt til $forslag_mottaker. Du vil f&aring; kopi til din e-post. Ta kontakt med $forslag_kontaktperson hvis dette ikke er tilfellet.";
 	$forslag_resultattype	=	"sendt";
 }
 ?>

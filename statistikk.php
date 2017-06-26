@@ -88,8 +88,8 @@ $forslag_dbtilkopling->close();
 	<div id="forslagsboks">
 	<h2>Statistikk:</h2><br/>
 	<p>
-		<em><a href="<?php echo $forslag_baseurl; ?>">Send inn forslag her.</a><br/></em><br/>
-		<em><a href="forslag.php">Les inkomne forslag her.</a><br/></em>
+		<em><a href="<?php echo $forslag_baseurl; ?>">Send inn forslag her.</a></em><br/>
+		<em><a href="forslag.php">Les innkomne forslag her.</a></em><br/>
 	</p>
 		<?php
 			if (empty($forslag_sakene) || empty($forslag_delegatene)) {

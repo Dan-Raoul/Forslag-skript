@@ -27,7 +27,13 @@ Kommentar LONGTEXT NOT NULL,
 IP VARCHAR(20) NOT NULL,
 Nettleser VARCHAR(255) NOT NULL,
 Referent VARCHAR(255) NOT NULL,
-Registrert DATETIME  NOT NULL
+Registrert DATETIME  NOT NULL,
+Endret DATETIME,
+Endrer VARCHAR(50),
+Endrekom LONGTEXT,
+EndretIP VARCHAR(20),
+Endretnettleser VARCHAR(255),
+Endretreferent VARCHAR(255)
 )";
 
 try {
