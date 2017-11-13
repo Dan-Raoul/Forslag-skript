@@ -8,7 +8,7 @@ if ($forslag_dbtilkopling->connect_errno) {
 } 
 
 // Lese frå database
-$forslag_lese_forslag ="SELECT id, Sak, Delegat, Namn, Linje, Type, Forslag, Kommentar FROM " . $forslag_dbtabell;
+$forslag_lese_forslag ="SELECT id, Sak, Namn, Linje, Type, Forslag, Kommentar FROM " . $forslag_dbtabell;
 
 // Søke og kontrollere kva som visast
 if (!empty ($forslag_dbid)) {
@@ -31,10 +31,6 @@ if (!empty ($_GET['fsak'])) {
 	$forslag_bare_fsak = test_input($_GET['fsak']);
 	$forslag_lese_forslag .= " WHERE Sak LIKE '" . $forslag_bare_fsak . "%'";
 }
-if (!empty ($_GET['fdelegat'])) {
-	$forslag_bare_fdelegat = test_input ($_GET['fdelegat']);
-	$forslag_lese_forslag .= " WHERE Delegat =" . $forslag_bare_fdelegat;
-}
 if (preg_match("/id/i",$_GET['etter'])) {
 	$forslag_lese_forslag .= " ORDER BY id";
 	$forslag_etter = test_input($_GET['etter']);
@@ -45,10 +41,6 @@ if (preg_match("/Sak/i",$_GET['etter'])) {
 }
 if (preg_match("/Linje/i",$_GET['etter'])) {
 	$forslag_lese_forslag .= " ORDER BY Linje";
-	$forslag_etter = test_input($_GET['etter']);
-}
-if (preg_match("/Delegat/i",$_GET['etter'])) {
-	$forslag_lese_forslag .= " ORDER BY Delegat";
 	$forslag_etter = test_input($_GET['etter']);
 }
 if (!$forslag_etter) {
@@ -72,7 +64,6 @@ if ($forslag_result->num_rows > 0) {
 			<tr>
 				<th>Nr:</th>
 				<th>Sak:</th>
-				<th>Delegat:</th>
 				<th>Navn:</th>
 				<th>Linje:</th>
 				<th>Type:</th>
@@ -89,7 +80,6 @@ if ($forslag_result->num_rows > 0) {
 		<tr>
 			<td>".$forslag_row['id']."</td>
 			<td>".$forslag_row['Sak']."</td>
-			<td>".$forslag_row['Delegat']."</td>
 			<td>".$forslag_row['Namn']."</td>
 			<td>".$forslag_row['Linje']."</td>
 			<td>".$forslag_row['Type']."</td>
@@ -116,7 +106,6 @@ if (!mysqli_set_charset($forslag_dbtilkopling, "utf8")) {
 /*
 	$forslag_variablar = "id=" . $_POST['id'] . ". ";
 	$forslag_variablar .= "Sak=" . $_POST['Sak'] . ". ";
-	$forslag_variablar .= "Delegat=" . $_POST['Delegat'] . ". ";
 	$forslag_variablar .= "etter=" . $_POST['etter'] . ". ";
 	$forslag_variablar .= "sortert=" . $_POST['sortert'] . ". ";
 	$forslag_variablar = test_input($forslag_variablar);

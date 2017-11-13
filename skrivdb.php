@@ -8,8 +8,8 @@ if ($forslag_dbtilkopling->connect_errno) {
 } 
 
 // MySQLi OO skriv data
-$forslag_skriv_forslag = $forslag_dbtilkopling->prepare("INSERT INTO " . $forslag_dbtabell . " (Sak, Delegat, Namn, Epost, Linje, Type, Forslag, Kommentar, IP, Nettleser, Referent, Registrert) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$forslag_skriv_forslag->bind_param("sissssssssss", $forslag_sak, $forslag_delegat, $forslag_namn, $forslag_epost, $forslag_linje, $forslag_type, $forslag_forslag, $forslag_kommentar, $forslag_ip, $forslag_nettleser, $forslag_referent, $forslag_tid);
+$forslag_skriv_forslag = $forslag_dbtilkopling->prepare("INSERT INTO " . $forslag_dbtabell . " (Sak, Namn, Epost, Linje, Type, Forslag, Kommentar, IP, Nettleser, Referent, Registrert) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$forslag_skriv_forslag->bind_param("sisssssssss", $forslag_sak, $forslag_namn, $forslag_epost, $forslag_linje, $forslag_type, $forslag_forslag, $forslag_kommentar, $forslag_ip, $forslag_nettleser, $forslag_referent, $forslag_tid);
 
 if ($forslag_skriv_forslag->execute()) {
 	$forslag_dbskrevet = 1;
@@ -28,7 +28,6 @@ if ($forslag_skriv_forslag->execute()) {
 					<body>
 						<p>Forslagsnummer (digitalt): ' . $forslag_dbid . '</p>
 						<p>Saksnummer: ' . $forslag_sak . '</p>
-						<p>Delegatnummer: ' . $forslag_delegat . '</p>
 						<p>Navn: ' . $forslag_namn . '</p>
 						<p>E-post: ' . $forslag_epost . '</p>
 						<p>Linjenummer: ' . $forslag_linje . '</p>

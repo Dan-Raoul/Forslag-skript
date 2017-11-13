@@ -35,38 +35,6 @@ if($forslag_result_sak->num_rows > 0) {
 else {
 	$forslag_sakene = "";
 }
-
-$forslag_stat_delegat ="SELECT id, Delegat, Namn, COUNT(*) AS freq FROM " . $forslag_dbtabell . " GROUP BY Delegat ORDER BY freq DESC";
-
-
-$forslag_result_delegat = $forslag_dbtilkopling->query($forslag_stat_delegat);
-
-if($forslag_result_delegat->num_rows > 0) {
-		$forslag_delegatene = "
-		<table>
-			<tr>
-				<th>Delegat:</th>
-				<th>Navn:</th>
-				<th>Antall:</th>
-			</tr>
-		";
-		// output data of each row
-		while($forslag_row = mysqli_fetch_assoc($forslag_result_delegat)) {
-			$forslag_delegatene .= "
-			<tr>
-				<td>".$forslag_row['Delegat']."</td>
-				<td>".$forslag_row['Namn']."</td>
-				<td>".$forslag_row['freq']."</td>
-			</tr>
-			";
-		}
-		$forslag_delegatene .= "</table>";
-}
-else {
-	$forslag_delegatene = "";
-}
-
-
 	
 $forslag_dbtilkopling->close();
 
@@ -92,15 +60,14 @@ $forslag_dbtilkopling->close();
 		<em><a href="forslag.php">Les innkomne forslag her.</a></em><br/>
 	</p>
 		<?php
-			if (empty($forslag_sakene) || empty($forslag_delegatene)) {
+			if (empty($forslag_sakene)) {
 				echo "Ingen statistikk";
 			}
 			else {
 				echo "<div class='left'>".$forslag_sakene."</div>";
-				echo "<div class='right'>".$forslag_delegatene."</div>";
 			}
 			// Feilsøke
-			// echo "$forslag_resultat $forslag_sakErr $forslag_linjeErr $forslag_delegatErr $forslag_namnErr $forslag_epostErr $forslag_typeErr $forslag_passErr $forslag_forslagErr";
+			// echo "$forslag_resultat $forslag_sakErr $forslag_linjeErr $forslag_namnErr $forslag_epostErr $forslag_typeErr $forslag_passErr $forslag_forslagErr";
 		?>
 	</div>
 </body>

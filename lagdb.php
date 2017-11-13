@@ -17,7 +17,6 @@ catch (Exception $forslag_pdo_error) {
 $forslag_lag_tabell = "CREATE TABLE " . $forslag_dbtabell . " (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 Sak VARCHAR(10) NOT NULL,
-Delegat INT(10) UNSIGNED NOT NULL,
 Namn VARCHAR(50) NOT NULL,
 Epost VARCHAR(50) NOT NULL,
 Linje VARCHAR(20) NOT NULL,

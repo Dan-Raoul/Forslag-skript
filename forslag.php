@@ -47,13 +47,10 @@ include 'lesdb.php';
 				';
 			}
 			?>
-			<label for="fdelegat">Delegatnummer: </label><br />
-				<input type="number" id="fdelegat" value="<?php echo $forslag_bare_fdelegat;?>" name="fdelegat" maxlength="6" size="6" /><br />
 			<label for="etter">Sortert på: </label><br />
 				<input type="radio" class="radio" id="etter" name="etter" value="id" <?php if (!$forslag_etter) { echo "checked";}?>>Nummer</input><br />
 				<input type="radio" class="radio" id="etter" name="etter" value="Sak" <?php if (preg_match("/Sak/i",$forslag_etter)) { echo "checked";}?>>Sak</input><br />
 				<input type="radio" class="radio" id="etter" name="etter" value="Linje" <?php if (preg_match("/Linje/i",$forslag_etter)) { echo "checked";}?>>Linjenummer/Kapittel/Avsnitt</input><br />
-				<input type="radio" class="radio" id="etter" name="etter" value="Delegat" <?php if (preg_match("/Delegat/i",$forslag_etter)) { echo "checked";}?>>Delegat</input><br />
 			<label for="sortert">Sortert: </label><br />
 				<input type="radio" class="radio" id="sortert" name="sortert" value="asc" <?php if (!$forslag_sortert) { echo "checked";}?>>Stigende</input><br />
 				<input type="radio" class="radio" id="sortert" name="sortert" value="desc" <?php if ($forslag_sortert) { echo "checked";}?>>Synkende</input><br />
@@ -78,7 +75,7 @@ include 'lesdb.php';
 		<?php
 			echo $forslag_forslagene;
 			// Feilsøke
-			// echo "$forslag_resultat $forslag_sakErr $forslag_linjeErr $forslag_delegatErr $forslag_namnErr $forslag_epostErr $forslag_typeErr $forslag_passErr $forslag_forslagErr";
+			// echo "$forslag_resultat $forslag_sakErr $forslag_linjeErr $forslag_namnErr $forslag_epostErr $forslag_typeErr $forslag_passErr $forslag_forslagErr";
 		?>
 	</div>
 </body>

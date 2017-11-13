@@ -19,7 +19,6 @@
 								<body>
 									<p><a href="' . $forslag_baseurl . '/forslag.php?fid=' . $forslag_dbid . '">Forslagsnummer (digitalt): ' . $forslag_dbid . '</a></p>
 									<p>Saksnummer: ' . $forslag_sak . '</p>
-									<p>Delegatnummer: ' . $forslag_delegat . '</p>
 									<p>Navn: ' . $forslag_namn . '</p>
 									<p>E-post: ' . $forslag_epost . '</p>
 									<p>Linjenummer: ' . $forslag_linje . '</p>
