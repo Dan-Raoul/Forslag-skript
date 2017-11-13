@@ -31,11 +31,11 @@ if ($_GET["sendt"] == TRUE) {
 		} else {
 			$forslag_sak = test_input($_POST["sak"]);
 			$forslag_sak_nummer = explode("/", $forslag_sak, 2);
-			$forslag_sak_nummer_padded = sprintf("%02d", $forslag_sak_nummer[0]);
+			$forslag_sak_nummer_padded = sprintf("%03d", $forslag_sak_nummer[0]);
 			$forslag_sak = $forslag_sak_nummer_padded;
 			$forslag_sak .= "/";
 			$forslag_sak .= $forslag_sak_nummer[1];
-			$forslag_sak_format = "/\A\d{2}[\/]" . $forslag_sak_aar . "[a-z]?/i";
+			$forslag_sak_format = "/\A\d{3}[\/]" . $forslag_sak_aar . "[a-z]?/i";
 			if (!preg_match($forslag_sak_format, $forslag_sak)) {
 				$forslag_skjemaErr['sak'] = "Saksnummer er i feil format - det skal være i formatet 05/17a. Du skrev: $forslag_sak";
 			}
@@ -45,11 +45,6 @@ if ($_GET["sendt"] == TRUE) {
 			$forslag_skjemaErr['linje'] = "Linjenummer er obligatorisk";
 		} else {
 			$forslag_linje = test_input($_POST["linje"]);
-		}
-		if (empty($_POST["delegat"])) {
-			$forslag_skjemaErr['delegat'] = "Delegatnummer er obligatorisk";
-		} else {
-			$forslag_delegat = test_input($_POST["delegat"]);
 		}
 		if (empty($_POST["namn"])) {
 			$forslag_skjemaErr['namn'] = "Navn er obligatorisk";
