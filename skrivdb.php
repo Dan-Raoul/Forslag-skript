@@ -9,7 +9,7 @@ if ($forslag_dbtilkopling->connect_errno) {
 
 // MySQLi OO skriv data
 $forslag_skriv_forslag = $forslag_dbtilkopling->prepare("INSERT INTO " . $forslag_dbtabell . " (Sak, Namn, Epost, Linje, Type, Forslag, Kommentar, IP, Nettleser, Referent, Registrert) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$forslag_skriv_forslag->bind_param("sisssssssss", $forslag_sak, $forslag_namn, $forslag_epost, $forslag_linje, $forslag_type, $forslag_forslag, $forslag_kommentar, $forslag_ip, $forslag_nettleser, $forslag_referent, $forslag_tid);
+$forslag_skriv_forslag->bind_param("sssssssssss", $forslag_sak, $forslag_namn, $forslag_epost, $forslag_linje, $forslag_type, $forslag_forslag, $forslag_kommentar, $forslag_ip, $forslag_nettleser, $forslag_referent, $forslag_tid);
 
 if ($forslag_skriv_forslag->execute()) {
 	$forslag_dbskrevet = 1;
