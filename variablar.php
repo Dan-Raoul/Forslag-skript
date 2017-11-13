@@ -10,6 +10,7 @@ $forslag_kontaktperson 		= ""; // Kven som har ansvaret - dvs. kven dei skal ta 
 $forslag_baseurl 				= ""; // Viss me skulle trenge det på eit tidspunkt, er det nyttig å fylle det ut her.
 $forslag_epost_domene		= ""; // Brukast til diverse e-postrelaterte settings
 $forslag_masterpassord		= ""; // Brukast til å endre forslag.
+$forslag_salt						= ""; // For å salte hasher - lag gjerne ein lang, intetseiande alfanumerisk string [a-zA-Z0-9]
 $forslag_dbtabell_oppretta	= FALSE; // Settast manuelt til TRUE når ein har oppretta databasetabell via start.php
 
 // Sette opp SMTP viss det skal brukast
@@ -22,7 +23,7 @@ $forslag_mail_pass			=	""; // Settast viss SMTP treng autentisering
 
 // Saksliste - fyll inn det du vil ha i formatet: <option value="01/17">01/17 Åpning og konstituering</option>. Viss du ikkje vil ferdig saksliste, vel FALSE på $saksliste_brukes.
 $forslag_saksliste_brukes 	= TRUE;
-$forslag_saksliste 			= '
+$forslag_saksliste 				= '
 						<option value="01/17">01/17 Åpning og konstituering</option>
 						<option value="01/17a">01/17a Godkjenning av innkalling</option>
 						<option value="01/17b">01/17b Valg av møtefunksjonærer</option>
@@ -52,11 +53,32 @@ $forslag_saksliste 			= '
 	';
 
 // Kople til database
-$forslag_dbserver 			= ""; // MySQL-tener
-$forslag_dbbrukar 			= ""; // og brukarnamn
-$forslag_dbpassord 		= ""; // og passord
-$forslag_dbnamn 			= ""; // og databasenamn
-$forslag_dbteiknkoding	=	"utf8mb4"; // og teiknkoding - la helst stå
-$forslag_dbtabell 			= "forslag_" . $forslag_tittel; // Og kva tabell, med basis i kva tittelen på arrangementet er
+$forslag_dbserver 				= ""; // MySQL-tener
+$forslag_dbbrukar 				= ""; // og brukarnamn
+$forslag_dbpassord 			= ""; // og passord
+$forslag_dbnamn 				= ""; // og databasenamn
+$forslag_dbteiknkoding		=	"utf8mb4"; // og teiknkoding - la helst stå
+$forslag_dbtabell 				= "forslag_" . $forslag_tittel; // Og kva tabell, med basis i kva tittelen på arrangementet er
 
+// Sjekke at variablar er satt
+$forslag_variablar				= array(
+							"forslag_opent", 
+							"forslag_mottaker", 
+							"forslag_mottaker_namn", 
+							"forslag_passord", 
+							"forslag_tittel", 
+							"forslag_sak_aar", 
+							"forslag_kontaktperson", 
+							"forslag_baseurl", 
+							"forslag_epost_domene", 
+							"forslag_masterpassord", 
+							"forslag_salt", 
+							"forslag_dbtabell_oppretta", 
+							"forslag_dbserver", 
+							"forslag_dbbrukar", 
+							"forslag_dbpassord", 
+							"forslag_dbnamn", 
+							"forslag_dbteiknkoding", 
+							"forslag_dbtabell");
+$forslag_variablar_satt	= compact($forslag_variablar);
 ?>
