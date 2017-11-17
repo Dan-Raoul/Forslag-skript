@@ -60,6 +60,7 @@ if ($_GET["sendt"] == TRUE) {
 			$forslag_skjemaErr['epost'] = "E-post er obligatorisk";
 		} else {
 			$forslag_epost = test_input($_POST["epost"]);
+			$forslag_epost = preg_replace('/\s+/', '', $forslag_epost);
 			// Sjekke e-postadressa
 			if (!filter_var($forslag_epost, FILTER_VALIDATE_EMAIL)) {
 			$forslag_skjemaErr['epost'] = "Feil e-postformat. "; 
