@@ -1,29 +1,31 @@
 ﻿<?php
 // Variablar som kan settast for bruk
-$forslag_opent 					= FALSE; // Slå av/på skjemaet: TRUE er på, FALSE er av
-$forslag_mottaker 				= ""; // Kven som skal få e-posten
-$forslag_mottaker_namn 	= ""; // Namn på kven som skal få e-posten
-$forslag_passord 				= ""; // Passord.
-$forslag_tittel 					= ""; // Tittel for arrangement - t.d. HEFLM, HULM m.m.
-$forslag_sak_aar				= "[1][7]"; // Årstal for møtet - ikkje bryt formatet.
-$forslag_kontaktperson 		= ""; // Kven som har ansvaret - dvs. kven dei skal ta kontakt med om det ikkje kjem e-post
-$forslag_baseurl 				= ""; // Viss me skulle trenge det på eit tidspunkt, er det nyttig å fylle det ut her.
-$forslag_epost_domene		= ""; // Brukast til diverse e-postrelaterte settings
-$forslag_masterpassord		= ""; // Brukast til å endre forslag.
-$forslag_salt						= ""; // For å salte hasher - lag gjerne ein lang, intetseiande alfanumerisk string [a-zA-Z0-9]
-$forslag_dbtabell_oppretta	= FALSE; // Settast manuelt til TRUE når ein har oppretta databasetabell via start.php
+$forslag_opent 							= FALSE; // Slå av/på skjemaet: TRUE er på, FALSE er av
+$forslag_mottaker 						= ""; // Kven som skal få e-posten
+$forslag_mottaker_namn 			= ""; // Namn på kven som skal få e-posten
+$forslag_passord	 					= ""; // Passord.
+$forslag_tittel	 						= ""; // Tittel for arrangement - t.d. HEFLM, HULM m.m.
+$forslag_sak_aar						= "[1][8]"; // Årstal for møtet - ikkje bryt formatet.
+$forslag_kontaktperson 				= ""; // Kven som har ansvaret - dvs. kven dei skal ta kontakt med om det ikkje kjem e-post
+$forslag_autorefresh_sekunder	= ""; // kor mange sekund skal det ta før autooppdatering?
+$forslag_domene 						= ""; // Viss me skulle trenge det på eit tidspunkt, er det nyttig å fylle det ut her.
+$forslag_baseurl 						= ""; // Viss me skulle trenge det på eit tidspunkt, er det nyttig å fylle det ut her.
+$forslag_epost_domene				= ""; // Brukast til diverse e-postrelaterte settings
+$forslag_masterpassord				= ""; // Brukast til å endre forslag.
+$forslag_salt								= ""; // For å salte hasher - lag gjerne ein lang, intetseiande alfanumerisk string [a-zA-Z0-9]
+$forslag_dbtabell_oppretta			= FALSE; // Settast manuelt til TRUE når ein har oppretta databasetabell via start.php
 
 // Sette opp SMTP viss det skal brukast
-$forslag_mail_smtp			=	FALSE; // Bruke/ikkje bruke SMTP. TRUE - bruke SMTP, FALSE - bruke sendmail
-$forslag_mail_server			=	""; // SMTP-server
-$forslag_mail_port				=	""; // Port til SMTP-server
-$forslag_mail_auth				=	FALSE; // Treng autentisering for SMTP
-$forslag_mail_user				=	""; // Settast viss SMTP treng autentisering
-$forslag_mail_pass			=	""; // Settast viss SMTP treng autentisering
+$forslag_mail_smtp				=	FALSE; // Bruke/ikkje bruke SMTP. TRUE - bruke SMTP, FALSE - bruke sendmail
+$forslag_mail_server				=	""; // SMTP-server
+$forslag_mail_port					=	""; // Port til SMTP-server
+$forslag_mail_auth					=	FALSE; // Treng autentisering for SMTP
+$forslag_mail_user					=	""; // Settast viss SMTP treng autentisering
+$forslag_mail_pass				=	""; // Settast viss SMTP treng autentisering
 
 // Saksliste - fyll inn det du vil ha i formatet: <option value="01/17">01/17 Åpning og konstituering</option>. Viss du ikkje vil ferdig saksliste, vel FALSE på $saksliste_brukes.
-$forslag_saksliste_brukes 	= TRUE;
-$forslag_saksliste 				= '
+$forslag_saksliste_brukes 		= TRUE;
+$forslag_saksliste 					= '
 						<option value="01/17">01/17 Åpning og konstituering</option>
 						<option value="01/17a">01/17a Godkjenning av innkalling</option>
 						<option value="01/17b">01/17b Valg av møtefunksjonærer</option>
@@ -53,15 +55,15 @@ $forslag_saksliste 				= '
 	';
 
 // Kople til database
-$forslag_dbserver 				= ""; // MySQL-tener
-$forslag_dbbrukar 				= ""; // og brukarnamn
-$forslag_dbpassord 			= ""; // og passord
-$forslag_dbnamn 				= ""; // og databasenamn
-$forslag_dbteiknkoding		=	"utf8mb4"; // og teiknkoding - la helst stå
-$forslag_dbtabell 				= "forslag_" . $forslag_tittel; // Og kva tabell, med basis i kva tittelen på arrangementet er
+$forslag_dbserver 					= ""; // MySQL-tener
+$forslag_dbbrukar 					= ""; // og brukarnamn
+$forslag_dbpassord 				= ""; // og passord
+$forslag_dbnamn 					= ""; // og databasenamn
+$forslag_dbteiknkoding			=	"utf8mb4"; // og teiknkoding - la helst stå
+$forslag_dbtabell 					= "forslag_" . $forslag_tittel; // Og kva tabell, med basis i kva tittelen på arrangementet er
 
 // Sjekke at variablar er satt
-$forslag_variablar				= array(
+$forslag_variablar					= array(
 							"forslag_opent", 
 							"forslag_mottaker", 
 							"forslag_mottaker_namn", 
@@ -69,6 +71,8 @@ $forslag_variablar				= array(
 							"forslag_tittel", 
 							"forslag_sak_aar", 
 							"forslag_kontaktperson", 
+							"forslag_autorefresh_sekunder",
+							"forslag_domene",
 							"forslag_baseurl", 
 							"forslag_epost_domene", 
 							"forslag_masterpassord", 
@@ -80,5 +84,5 @@ $forslag_variablar				= array(
 							"forslag_dbnamn", 
 							"forslag_dbteiknkoding", 
 							"forslag_dbtabell");
-$forslag_variablar_satt	= compact($forslag_variablar);
+$forslag_variablar_satt		= compact($forslag_variablar);
 ?>
