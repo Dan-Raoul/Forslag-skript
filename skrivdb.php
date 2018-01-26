@@ -52,6 +52,6 @@ try {
 	$forslag_dbtilkopling->close();
 }
 catch (Exception $e) {
-	die("Feil ved skriving til databasen. Er database opprettet? Feilmelding: " . $e->getMessage();)
+	die("Feil ved skriving til databasen. Er database opprettet? Feilmelding: " . $e->getMessage());
 }
 ?>
