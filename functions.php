@@ -103,5 +103,17 @@ $forslag_pdo_opt		=	[
     PDO::ATTR_EMULATE_PREPARES   			=> 	FALSE,
 ];
 
+// Autoppdatering
+
+if($_COOKIE[forslag_autorefresh_cookie] == 2) {
+	$forslag_autorefresh = 2;
+	$forslag_autorefresh_tekst = "Autoppdatering: PÅ";
+	$forslag_autorefresh_change = 1;
+}
+else {
+    $forslag_autorefresh = 1;
+	$forslag_autorefresh_tekst = "Autoppdatering: AV";
+	$forslag_autorefresh_change = 2;
+}
 
 ?>

@@ -11,6 +11,11 @@ include 'lesdb.php';
 	<meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" type="text/css" href="standard.css" />
 	<script src="standard.js"></script>
+	<?php 
+		if($forslag_autorefresh == 2) {
+			echo "<meta http-equiv='refresh' content='" . $forslag_autorefresh_sekunder . "' />";
+		}
+	?>
 </head>
 <body>
 	<div id="header">
@@ -74,6 +79,13 @@ include 'lesdb.php';
 	<p>
 		<em><a href="<?php echo $forslag_baseurl; ?>">Send inn forslag her.</a></em><br/>
 		<em><a href="statistikk.php">Se statistikk på innkomne forslag.</a><br/></em>
+	</p>
+	<p class="autorefresh">
+		<a onclick="createAutoRefreshCookie('forslag_autorefresh_cookie','<?php echo $forslag_autorefresh_change; ?>','3','<?php echo $forslag_domene; ?>');">
+			<?php
+				echo $forslag_autorefresh_tekst;
+			?>
+		</a>
 	</p>
 		<?php
 			echo $forslag_forslagene;

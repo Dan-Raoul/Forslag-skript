@@ -34,7 +34,7 @@ function resetForm(form) {
 }
 var myForm = document.getElementById('avgrens');
 
-myFrm.addEventListener('submit', function () {
+myForm.addEventListener('submit', function () {
     var allInputs = myForm.getElementsByTagName('input');
 
     for (var i = 0; i < allInputs.length; i++) {
@@ -45,3 +45,17 @@ myFrm.addEventListener('submit', function () {
         }
     }
 });
+
+// Create cookie for autorefresh
+function createAutoRefreshCookie(name,value,days,domain) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else {
+		var expires = "";
+	}
+    document.cookie = name+"="+value+expires+"; path=/; domain="+domain;
+	window.location.reload();
+}

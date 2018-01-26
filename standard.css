@@ -36,6 +36,12 @@ input {
 	width:5%;
 	max-width:2em;
 }
+.autorefresh {
+	color: -webkit-link;
+	cursor: pointer;
+	text-decoration: underline;
+	weight: strong;
+}
 select datalist {
 	width: 75%;
 	max-width: 350px;
