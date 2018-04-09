@@ -8,7 +8,7 @@ if ($forslag_dbtilkopling->connect_errno) {
 } 
 
 // Lese frå database
-$forslag_lese_forslag ="SELECT id, Sak, Namn, Linje, Type, Forslag, Kommentar FROM " . $forslag_dbtabell;
+$forslag_lese_forslag ="SELECT id, Sak, Namn, Epost, Linje, Type, Forslag, Kommentar FROM " . $forslag_dbtabell;
 
 // Søke og kontrollere kva som visast
 if (!empty ($forslag_dbid)) {
@@ -78,9 +78,9 @@ if ($forslag_result->num_rows > 0) {
 		$forslag_row['Kommentar'] = allow_formatting($forslag_row['Kommentar']);
         $forslag_forslagene .= "
 		<tr>
-			<td>".$forslag_row['id']."</td>
-			<td>".$forslag_row['Sak']."</td>
-			<td>".$forslag_row['Namn']."</td>
+			<td><a href='" . $forslag_baseurl . "/forslag.php?id=" . $forslag_row['id'] . "'>" . $forslag_row['id'] . "</a></td>
+			<td><a href='" . $forslag_baseurl . "/forslag.php?fsak=" . $forslag_row['Sak'] . "'>"  . $forslag_row['Sak'] . "</a></td>
+			<td><a href='mailto:" . $forslag_row['Epost'] . "'>".$forslag_row['Namn']."</a></td>
 			<td>".$forslag_row['Linje']."</td>
 			<td>".$forslag_row['Type']."</td>
 			<td class='brei-f'>".$forslag_row['Forslag']."</td>

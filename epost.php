@@ -27,7 +27,7 @@
 										' . $forslag_kommentaren . '
 									<p>' . $forslag_dbtilkopling_status . '</p>
 									<p>Forslaget er tilgjengelig her:<br />
-									<a href=' . $forslag_baseurl . '/forslag.php?fid=' . $forslag_dbid . '>' . $forslag_baseurl . '/forslag.php?fid=' . $forslag_dbid . '</a></p>
+									<a href="' . $forslag_baseurl . '/forslag.php?fid=' . $forslag_dbid . '">' . $forslag_baseurl . '/forslag.php?fid=' . $forslag_dbid . '</a></p>
 									<p>Sendt ' . $forslag_tid . ' fra ' . $forslag_ip . ', med nettleser ' . $forslag_nettleser . ', og ble referert fra ' . $forslag_referent . '</p>
 								</body>
 							</html>
