@@ -65,7 +65,7 @@ include 'config.php';
 			}
 			?>
 			<label for="linje">Linjenummer/Kapittel/Avsnitt: </label> <span class="error">* <?php echo $forslag_skjemaErr["linje"];?></span><br />
-				<input type="text" id="linje" value="<?php echo $forslag_linje;?>" name="linje" min="1" maxlength="25" required size="25" /><br />
+				<input type="text" id="linje" value="<?php echo $forslag_linje;?>" name="linje" min="1" maxlength="255" required size="25" /><br />
 			<label for="delegat">Delegatnummer: </label> <span class="error">* <?php echo $forslag_skjemaErr["delegat"];?></span><br />
 				<input type="number" id="delegat" value="<?php echo $forslag_delegat;?>" name="delegat" min="1" maxlength="6" required size="6" /><br />
 			<label for="namn">Navn forslagsstiller: </label> <span class="error">* <?php echo $forslag_skjemaErr["namn"];?></span><br />
