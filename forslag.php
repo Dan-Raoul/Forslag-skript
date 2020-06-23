@@ -1,13 +1,20 @@
 ﻿<?php
 include 'config.php';
 include 'lesdb.php';
+if ($forslag_forslagene_tal > 0) {
+	$forslag_sidetittel = "($forslag_forslagene_tal) Forslag p&aring; $forslag_tittel";
+}
+elseif ($forslag_forslagene_tal = 0) {
+	$forslag_sidetittel = "Forslag p&aring; $forslag_tittel";
+}
+else {
+	$forslag_sidetittel = "Forslag p&aring; $forslag_tittel";
+};
 ?>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>
-		Forslag p&aring; <?php echo $forslag_tittel; ?>
-	</title>
+	<title><?php echo $forslag_sidetittel; ?></title>
 	<meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" type="text/css" href="standard.css" />
 	<script src="standard.js"></script>

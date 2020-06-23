@@ -67,6 +67,7 @@ elseif ($_GET['sortert'] == 'desc') {
 $forslag_result = $forslag_dbtilkopling->query($forslag_lese_forslag);
 
 if ($forslag_result->num_rows > 0) {
+	$forslag_forslagene_tal = $forslag_result->num_rows;
     $forslag_forslagene = "
 		<table>
 			<tr>
